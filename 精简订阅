@@ -55,7 +55,7 @@ proxy-groups:
     icon: "https://cdn.jsdelivr.net/gh/hampusborgos/country-flags@main/svg/hk.svg"
     filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
     type: url-test
-    interval: 300
+    interval: 3600
     tolerance: 50
     include-all: true
 
@@ -63,7 +63,7 @@ proxy-groups:
     icon: "https://cdn.jsdelivr.net/gh/hampusborgos/country-flags@main/svg/sg.svg"
     filter: (?i)新加坡|坡|狮城|SG|Singapore
     type: url-test
-    interval: 300
+    interval: 3600
     tolerance: 50
     include-all: true
 
@@ -71,7 +71,7 @@ proxy-groups:
     icon: "https://cdn.jsdelivr.net/gh/hampusborgos/country-flags@main/svg/cn.svg"
     filter: (?i)台|新北|彰化|TW|Taiwan
     type: url-test
-    interval: 300
+    interval: 3600
     tolerance: 50
     include-all: true
 
@@ -79,7 +79,7 @@ proxy-groups:
     icon: "https://cdn.jsdelivr.net/gh/hampusborgos/country-flags@main/svg/jp.svg"
     filter: (?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan
     type: url-test
-    interval: 300
+    interval: 3600
     tolerance: 50
     include-all: true
 
@@ -87,7 +87,7 @@ proxy-groups:
     icon: "https://cdn.jsdelivr.net/gh/hampusborgos/country-flags@main/svg/us.svg"
     filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
     type: url-test
-    interval: 300
+    interval: 3600
     tolerance: 50
     include-all: true
 
@@ -95,7 +95,7 @@ proxy-groups:
     icon: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Globe.svg"
     filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|台|新北|彰化|TW|Taiwan|新加坡|坡|狮城|SG|Singapore|灾|网易|Netease|套餐|重置|剩余|到期|订阅|群|账户|流量|有效期|时间|官网
     type: url-test
-    interval: 300
+    interval: 3600
     tolerance: 50
     include-all: true
 # —————————
