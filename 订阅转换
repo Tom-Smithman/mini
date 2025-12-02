@@ -1,3 +1,5 @@
+#来源：https://raw.githubusercontent.com/Tom-Smithman/mini/master/订阅转换
+
 rules:
   - "DOMAIN-SUFFIX,fromcoast.top,DIRECT"
   - "DOMAIN-KEYWORD,hhanclub,DIRECT" 
@@ -213,4 +215,5 @@ proxy-groups:
       - US AUTO
     name: GLOBAL
     type: select
+
 
