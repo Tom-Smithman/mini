@@ -1,6 +1,40 @@
 ##来源：https://raw.githubusercontent.com/Tom-Smithman/mini/master/精简订阅
                             
-                            
+
+rules:
+  - "DOMAIN-SUFFIX,fromcoast.top,DIRECT"
+  - "DOMAIN-SUFFIX,hhanclub.top,DIRECT" 
+  - "DOMAIN-SUFFIX,tieba.baidu.com,DIRECT" 
+  - "DOMAIN-SUFFIX,micu.hk,DIRECT" 
+  - "DOMAIN-SUFFIX,uestc.edu.cn,DIRECT"
+  - "DOMAIN-SUFFIX,m-team.cc,DIRECT"
+  - "DOMAIN-SUFFIX,10.253.0.235,DIRECT" 
+  - "DOMAIN-SUFFIX,labuladong.online,PROXY"
+  - "DOMAIN-SUFFIX,nowcoder.com,DIRECT" 
+  - "DOMAIN-SUFFIX,115,DIRECT"
+
+
+  - DST-PORT,53,DIRECT
+  - DST-PORT,853,DIRECT
+  
+  - RULE-SET,WebRTC_Port/Domain,REJECT
+  - RULE-SET,AWAvenue_Ads_Rule,REJECT      #秋风去广告
+  - RULE-SET,blackmatrix7_direct,DIRECT    #直连补充规则
+  - RULE-SET,GAME,DIRECT                   #游戏，走直连
+  - RULE-SET,CN_Domain,DIRECT, no-resolve
+  - RULE-SET,CN_IP,DIRECT
+  - RULE-SET,Private_Domain,DIRECT
+  - RULE-SET,Private_IP,DIRECT
+  - RULE-SET,Microsoft_Domain,DIRECT
+  
+  - RULE-SET,gfw_domain,PROXY      #被GFW阻断的域名，走代理
+  - RULE-SET,geolocation-!cn,PROXY #非大陆的地理位置流量，走代理
+  - RULE-SET,proxy,PROXY           #捕获未被明确分流的代理流量
+  
+  - MATCH,PROXY
+  # —————————
+
+
                             
                             ###Ayanami0's override###
 dns:
@@ -178,23 +212,3 @@ rule-providers:
     path: ./rules/Microsoft.mrs
     url: "https://cdn.jsdelivr.net/gh/GitMetaio/rule@master/rule/Clash/Microsoft/Microsoft_OCD_Domain.mrs"
     
-rules:
-  - DST-PORT,53,DIRECT
-  - DST-PORT,853,DIRECT
-  
-  - RULE-SET,WebRTC_Port/Domain,REJECT
-  - RULE-SET,AWAvenue_Ads_Rule,REJECT      #秋风去广告
-  - RULE-SET,blackmatrix7_direct,DIRECT    #直连补充规则
-  - RULE-SET,GAME,DIRECT                   #游戏，走直连
-  - RULE-SET,CN_Domain,DIRECT, no-resolve
-  - RULE-SET,CN_IP,DIRECT
-  - RULE-SET,Private_Domain,DIRECT
-  - RULE-SET,Private_IP,DIRECT
-  - RULE-SET,Microsoft_Domain,DIRECT
-  
-  - RULE-SET,gfw_domain,PROXY      #被GFW阻断的域名，走代理
-  - RULE-SET,geolocation-!cn,PROXY #非大陆的地理位置流量，走代理
-  - RULE-SET,proxy,PROXY           #捕获未被明确分流的代理流量
-  
-  - MATCH,PROXY
-  # —————————
