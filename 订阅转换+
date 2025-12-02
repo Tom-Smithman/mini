@@ -44,23 +44,31 @@ rules:
 rule-providers:
 
   blackmatrix7_direct:
-    <<: *YAML
     path: ./ruleset/blackmatrix7_direct.yaml
     url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Direct/Direct.yaml"
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
 
 ###去广告###
   AWAvenue_Ads_Rule:
-    <<: *YAML
     path: ./ruleset/AWAvenue_Ads_Rule_Clash.yaml
     url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main//Filters/AWAvenue-Ads-Rule-Clash.yaml"
+    behavior: domain
+    interval: 86400
+    format: yaml
+    type: http
 
 ###WebRTC###
 
   WebRTC_Port/Domain:
-    <<: *Classical
-    path: ./rules/WebRTC.list
+    path: ./ruleset/WebRTC.list
     url: "https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/rules/WebRTC.list"
-
+    behavior: domain
+    interval: 86400
+    format: text
+    type: http
 
 
   private:
