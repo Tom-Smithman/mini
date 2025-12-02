@@ -184,12 +184,12 @@ proxy-groups:
       - SG AUTO
       - JP AUTO
       - US AUTO
-  - icon: https://raw.githubusercontent.com/Tom-Smithman/mini/master/Color/Urltest.png
-    include-all: true
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置
-    name: AUTO
-    type: url-test
-    interval: 300
+#  - icon: https://raw.githubusercontent.com/Tom-Smithman/mini/master/Color/Urltest.png
+#    include-all: true
+#    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置
+#    name: AUTO
+#    type: url-test
+#    interval: 3600
   - icon: https://raw.githubusercontent.com/Tom-Smithman/mini/master/Color/OpenAI.png
     name: AIGC
     type: select
@@ -219,34 +219,34 @@ proxy-groups:
     filter: (?i)香港|Hong Kong|HK|🇭🇰
     name: HK AUTO
     type: url-test
-    interval: 300
+    interval: 3600
   - icon: https://raw.githubusercontent.com/Tom-Smithman/mini/master/Color/SG.png
     include-all: true
     exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置
     filter: (?i)新加坡|Singapore|🇸🇬
     name: SG AUTO
     type: url-test
-    interval: 300
+    interval: 3600
   - icon: https://raw.githubusercontent.com/Tom-Smithman/mini/master/Color/JP.png
     include-all: true
     exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置
     filter: (?i)日本|Japan|🇯🇵
     name: JP AUTO
     type: url-test
-    interval: 300
+    interval: 3600
   - icon: https://raw.githubusercontent.com/Tom-Smithman/mini/master/Color/US.png
     include-all: true
     exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置
     filter: (?i)美国|USA|🇺🇸
     name: US AUTO
     type: url-test
-    interval: 300
+    interval: 3600
   - icon: https://raw.githubusercontent.com/Tom-Smithman/mini/master/Color/Global.png
     include-all: true
     exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置
     proxies:
       - PROXY
-      - AUTO
+#      - AUTO
       - AIGC
       - Telegram
       - Google
