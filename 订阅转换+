@@ -180,7 +180,7 @@ proxy-groups:
     type: select
     proxies:
       - HK AUTO
-      - AUTO
+#      - AUTO
       - SG AUTO
       - JP AUTO
       - US AUTO
