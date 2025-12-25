@@ -40,7 +40,7 @@ rules:
                             ###Ayanami0's override###
 dns:
   enable: true
-  ipv6: false
+  ipv6: true
   listen: 0.0.0.0:1053
   prefer-h3: false     # 如果DNS服务器支持DoH3会优先使用h3，默认关
   respect-rules: true  # 让连接DNS服务器时能够遵循规则
