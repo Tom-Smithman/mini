@@ -53,7 +53,7 @@ function main(config) {
   config["dns"] = {
     "enable": true,
     "listen": "0.0.0.0:1053",
-    "ipv6": true,
+    "ipv6": false,
     "enhanced-mode": "fake-ip",
     "use-system-hosts": false,
     "cache-algorithm": "arc",
@@ -570,3 +570,4 @@ function main(config) {
 
   return config;
 }
+
