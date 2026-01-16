@@ -1,15 +1,15 @@
 function main(config) {
   config["rules"] = [
-	"DOMAIN-SUFFIX,10.253.0.235,DIRECT",  
-	"DOMAIN-SUFFIX,fromcoast.top,DIRECT",
-	"DOMAIN-SUFFIX,hhanclub.top,DIRECT", 
-	"DOMAIN-SUFFIX,tieba.baidu.com,DIRECT", 
-	"DOMAIN-SUFFIX,micu.hk,DIRECT", 
+	   "DOMAIN-SUFFIX,10.253.0.235,DIRECT",  
+	   "DOMAIN-SUFFIX,fromcoast.top,DIRECT",
+	   "DOMAIN-SUFFIX,hhanclub.top,DIRECT", 
+	   "DOMAIN-SUFFIX,tieba.baidu.com,DIRECT", 
+	   "DOMAIN-SUFFIX,micu.hk,DIRECT", 
    	"DOMAIN-SUFFIX,uestc.edu.cn,DIRECT",
-	"DOMAIN-SUFFIX,m-team.cc,DIRECT",
-	"DOMAIN-SUFFIX,labuladong.online,节点选择",
-	"DOMAIN-SUFFIX,nowcoder.com,DIRECT", 
-	"DOMAIN-SUFFIX,115,DIRECT", 
+	   "DOMAIN-SUFFIX,m-team.cc,DIRECT",
+	   "DOMAIN-SUFFIX,labuladong.online,节点选择",
+	   "DOMAIN-SUFFIX,nowcoder.com,DIRECT", 
+	   "DOMAIN-SUFFIX,115,DIRECT", 
     "DOMAIN-SUFFIX,bing.com,DIRECT",
     "DOMAIN-SUFFIX,ieee.org,DIRECT",
     "DOMAIN-SUFFIX,codetop.cc,DIRECT",
@@ -55,6 +55,8 @@ function main(config) {
     "listen": "0.0.0.0:1053",
     "ipv6": true,
     "enhanced-mode": "fake-ip",
+    "use-system-hosts": false,
+    "cache-algorithm": "arc",
     "fake-ip-range": "198.18.0.1/24",
     "respect-rules": true,
     "default-nameserver": [
@@ -66,18 +68,43 @@ function main(config) {
       "https://8.8.8.8/dns-query"
     ],
     "proxy-server-nameserver": [
-      "https://doh.pub/dns-query"
+    "https://223.5.5.5/dns-query",
+    "https://doh.pub/dns-query"
     ],
     "fake-ip-filter": [
-      "+.lan",
-      "+.local",
-      "+.apple.com",
-      "+.icloud.com",
-      "+.msftconnecttest.com",
-      "+.msftncsi.com",
-      "time.*.com",
-      "pool.ntp.org"
+    "+.lan",
+    "+.local",
+    "+.msftconnecttest.com",
+    "+.msftncsi.com",
+    "localhost.ptlogin2.qq.com",
+    "localhost.sec.qq.com",
+    "+.in-addr.arpa", 
+    "+.ip6.arpa",
+    "time.*.com",
+    "time.*.gov",
+    "pool.ntp.org",
+    "localhost.work.weixin.qq.com",
+    // FlClash移动端优化
+    "+.apple.com",            // Apple服务直连
+    "+.icloud.com",           // iCloud服务直连
+    "+.googleapis.com"        // Google服务优化
+    ],
+      "nameserver-policy": {
+    "geosite:private,cn": [
+      "https://223.5.5.5/dns-query",
+      "https://doh.pub/dns-query"
     ]
+  },
+  // FlClash移动优化
+  "cache-size": 8192,        // 适中缓存大小
+  "dns-cache": true,         // 启用DNS缓存
+  "dns-hijack": ["8.8.8.8:53", "8.8.4.4:53"],  // DNS劫持优化
+  "fallback": ["https://1.1.1.1/dns-query", "https://8.8.8.8/dns-query"],
+  "fallback-filter": {
+    "geoip": true,
+    "geoip-code": "CN",
+    "ipcidr": ["240.0.0.0/4"]
+  }
   };
 
   
@@ -533,64 +560,6 @@ function main(config) {
       type: "http"
     }
   };
-const dnsConfig = {
-  "enable": true,
-  "listen": "0.0.0.0:1053",
-  "ipv6": true,              // 移动设备关闭IPv6省电
-  "prefer-h3": false,         // 禁用HTTP/3减少开销
-  "respect-rules": true,
-  "use-system-hosts": false,
-  "cache-algorithm": "arc",
-  "enhanced-mode": "fake-ip",
-  "fake-ip-range": "198.18.0.1/24",  // 缩小范围减少内存占用
-  "fake-ip-filter": [
-    "+.lan",
-    "+.local",
-    "+.msftconnecttest.com",
-    "+.msftncsi.com",
-    "localhost.ptlogin2.qq.com",
-    "localhost.sec.qq.com",
-    "+.in-addr.arpa", 
-    "+.ip6.arpa",
-    "time.*.com",
-    "time.*.gov",
-    "pool.ntp.org",
-    "localhost.work.weixin.qq.com",
-    // FlClash移动端优化
-    "+.apple.com",            // Apple服务直连
-    "+.icloud.com",           // iCloud服务直连
-    "+.googleapis.com"        // Google服务优化
-  ],
-  "default-nameserver": [
-    "223.5.5.5",
-    "119.29.29.29"
-  ],
-  "nameserver": [
-    "https://1.1.1.1/dns-query",
-    "https://8.8.8.8/dns-query"
-  ],
-  "proxy-server-nameserver": [
-    "https://223.5.5.5/dns-query",
-    "https://doh.pub/dns-query"
-  ],
-  "nameserver-policy": {
-    "geosite:private,cn": [
-      "https://223.5.5.5/dns-query",
-      "https://doh.pub/dns-query"
-    ]
-  },
-  // FlClash移动优化
-  "cache-size": 8192,        // 适中缓存大小
-  "dns-cache": true,         // 启用DNS缓存
-  "dns-hijack": ["8.8.8.8:53", "8.8.4.4:53"],  // DNS劫持优化
-  "fallback": ["https://1.1.1.1/dns-query", "https://8.8.8.8/dns-query"],
-  "fallback-filter": {
-    "geoip": true,
-    "geoip-code": "CN",
-    "ipcidr": ["240.0.0.0/4"]
-  }
-};
 
   return config;
 }
-
