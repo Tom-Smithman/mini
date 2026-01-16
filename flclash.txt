@@ -1,15 +1,15 @@
 function main(config) {
   config["rules"] = [
-	   "DOMAIN-SUFFIX,10.253.0.235,DIRECT",  
-	   "DOMAIN-SUFFIX,fromcoast.top,DIRECT",
-	   "DOMAIN-SUFFIX,hhanclub.top,DIRECT", 
-	   "DOMAIN-SUFFIX,tieba.baidu.com,DIRECT", 
-	   "DOMAIN-SUFFIX,micu.hk,DIRECT", 
+	"DOMAIN-SUFFIX,10.253.0.235,DIRECT",  
+	"DOMAIN-SUFFIX,fromcoast.top,DIRECT",
+	"DOMAIN-SUFFIX,hhanclub.top,DIRECT", 
+	"DOMAIN-SUFFIX,tieba.baidu.com,DIRECT", 
+	"DOMAIN-SUFFIX,micu.hk,DIRECT", 
    	"DOMAIN-SUFFIX,uestc.edu.cn,DIRECT",
-	   "DOMAIN-SUFFIX,m-team.cc,DIRECT",
-	   "DOMAIN-SUFFIX,labuladong.online,节点选择",
-	   "DOMAIN-SUFFIX,nowcoder.com,DIRECT", 
-	   "DOMAIN-SUFFIX,115,DIRECT", 
+	"DOMAIN-SUFFIX,m-team.cc,DIRECT",
+	"DOMAIN-SUFFIX,labuladong.online,节点选择",
+	"DOMAIN-SUFFIX,nowcoder.com,DIRECT", 
+	"DOMAIN-SUFFIX,115,DIRECT", 
     "DOMAIN-SUFFIX,bing.com,DIRECT",
     "DOMAIN-SUFFIX,ieee.org,DIRECT",
     "DOMAIN-SUFFIX,codetop.cc,DIRECT",
@@ -118,7 +118,7 @@ function main(config) {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Telegram.png",
       type: "select",
       proxies: [
-        "美国节点", "节点选择", "自动选择", "狮城节点", "香港节点", "台湾节点", "日本节点", "韩国节点", "其他节点", "手动切换", "DIRECT"
+         "节点选择", "美国节点" , "自动选择", "狮城节点", "香港节点", "台湾节点", "日本节点", "韩国节点", "其他节点", "手动切换", "DIRECT"
       ]
     },
     {
@@ -537,7 +537,7 @@ const dnsConfig = {
   "enable": true,
   "listen": "0.0.0.0:1053",
   "ipv6": true,              // 移动设备关闭IPv6省电
-  "prefer-h3": true,         // 禁用HTTP/3减少开销
+  "prefer-h3": false,         // 禁用HTTP/3减少开销
   "respect-rules": true,
   "use-system-hosts": false,
   "cache-algorithm": "arc",
@@ -593,3 +593,4 @@ const dnsConfig = {
 
   return config;
 }
+
