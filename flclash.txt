@@ -122,7 +122,7 @@ function main(config) {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png",
       type: "url-test",
       "include-all": true,
-      "exclude-filter": "(?i)香港|Hong Kong|HK|hongkong",
+      "exclude-filter": "(?i)香港|Hong Kong|HK|hongkong|DIRECT",
       interval: 14400, // 延迟测试时间间隔改为 4 小时
       tolerance: 50
     },
@@ -266,6 +266,7 @@ function main(config) {
       "include-all": true,
       filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong",
       type: "url-test",
+      "exclude-filter": "(?i)DIRECT",  // 排除 DIRECT
       interval: 14400, // 延迟测试时间间隔改为 4 小时
       tolerance: 50
     },
@@ -275,6 +276,7 @@ function main(config) {
       "include-all": true,
       filter: "(?i)台|新北|彰化|TW|Taiwan",
       type: "url-test",
+      "exclude-filter": "(?i)DIRECT",
       interval: 14400, // 延迟测试时间间隔改为 4 小时
       tolerance: 50
     },
@@ -284,6 +286,7 @@ function main(config) {
       "include-all": true,
       filter: "(?i)新加坡|坡|狮城|SG|Singapore",
       type: "url-test",
+      "exclude-filter": "(?i)DIRECT",
       interval: 14400, // 延迟测试时间间隔改为 4 小时
       tolerance: 50
     },
@@ -293,6 +296,7 @@ function main(config) {
       "include-all": true,
       filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States",
       type: "url-test",
+      "exclude-filter": "(?i)DIRECT",
       interval: 14400, // 延迟测试时间间隔改为 4 小时
       tolerance: 50
     },
@@ -302,6 +306,7 @@ function main(config) {
       "include-all": true,
       filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan",
       type: "url-test",
+      "exclude-filter": "(?i)DIRECT",
       interval: 14400, // 延迟测试时间间隔改为 4 小时
       tolerance: 50
     },
@@ -311,6 +316,7 @@ function main(config) {
       "include-all": true,
       filter: "(?i)KR|Korea|KOR|首尔|韩|韓",
       type: "url-test",
+      "exclude-filter": "(?i)DIRECT",
       interval: 14400, // 延迟测试时间间隔改为 4 小时
       tolerance: 50
     },
@@ -320,6 +326,7 @@ function main(config) {
       "include-all": true,
       "exclude-filter": "(?i)港|HK|hk|Hong Kong|HongKong|hongkong|台|新北|彰化|TW|Taiwan|新加坡|坡|狮城|SG|Singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|KR|Korea|KOR|首尔|韩|韓",
       type: "url-test",
+      "exclude-filter": "(?i)DIRECT",
       interval: 14400, // 延迟测试时间间隔改为 4 小时
       tolerance: 50
     },
