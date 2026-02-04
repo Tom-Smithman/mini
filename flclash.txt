@@ -118,6 +118,16 @@ function main(config) {
       ]
     },
     {
+      name: "香港节点",
+      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png",
+      "include-all": true,
+      filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong",
+      type: "url-test",
+      "exclude-filter": "(?i)DIRECT|hy\\d|linkhy|Hysteria",  // 排除 DIRECT
+      interval: 14400, // 延迟测试时间间隔改为 4 小时
+      tolerance: 50
+    },
+    {
       name: "自动选择",
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png",
       type: "url-test",
@@ -137,7 +147,7 @@ function main(config) {
       icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bot.png",
       type: "select",
       proxies: [
-        "美国节点", "节点选择", "自动选择", "狮城节点", "香港节点", "台湾节点", "日本节点", "韩国节点", "其他节点", "手动切换", "DIRECT"
+        "狮城节点", "美国节点", "节点选择", "自动选择",  "香港节点", "台湾节点", "日本节点", "韩国节点", "其他节点", "手动切换", "DIRECT"
       ]
     },
     {
@@ -259,16 +269,6 @@ function main(config) {
       proxies: [
         "节点选择", "自动选择", "DIRECT", "香港节点", "台湾节点", "狮城节点", "日本节点", "美国节点", "韩国节点", "其他节点", "手动切换"
       ]
-    },
-    {
-      name: "香港节点",
-      icon: "https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png",
-      "include-all": true,
-      filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong",
-      type: "url-test",
-      "exclude-filter": "(?i)DIRECT",  // 排除 DIRECT
-      interval: 14400, // 延迟测试时间间隔改为 4 小时
-      tolerance: 50
     },
     {
       name: "台湾节点",
