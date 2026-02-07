@@ -224,7 +224,7 @@ proxy-groups:
     interval: 3600
   - icon: https://raw.githubusercontent.com/Tom-Smithman/mini/master/Color/SG.png
     include-all: true
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|专线
     filter: (?i)新加坡|Singapore|🇸🇬
     name: SG AUTO
     type: url-test
