@@ -2,17 +2,18 @@
 #来源：https://raw.githubusercontent.com/Tom-Smithman/mini/master/订阅转换%2B
 
 rules:
+  - "DOMAIN-SUFFIX,10.253.0.235,DIRECT"  
   - "DOMAIN-SUFFIX,fromcoast.top,DIRECT"
   - "DOMAIN-SUFFIX,hhanclub.top,DIRECT" 
   - "DOMAIN-SUFFIX,tieba.baidu.com,DIRECT" 
   - "DOMAIN-SUFFIX,micu.hk,DIRECT" 
   - "DOMAIN-SUFFIX,uestc.edu.cn,DIRECT"
   - "DOMAIN-SUFFIX,m-team.cc,DIRECT"
-  - "DOMAIN-SUFFIX,10.253.0.235,DIRECT" 
   - "DOMAIN-SUFFIX,labuladong.online,PROXY"
   - "DOMAIN-SUFFIX,nowcoder.com,DIRECT" 
   - "DOMAIN-SUFFIX,115,DIRECT" 
-
+  - "DOMAIN-SUFFIX,bing.com,DIRECT"
+  - "DOMAIN-SUFFIX,ieee.org,DIRECT"
 
 
     
@@ -216,7 +217,7 @@ proxy-groups:
       - US AUTO
   - icon: https://raw.githubusercontent.com/Tom-Smithman/mini/master/Color/HK.png
     include-all: true
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|hysteria2|hy2
     filter: (?i)香港|Hong Kong|HK|🇭🇰
     name: HK AUTO
     type: url-test
