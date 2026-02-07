@@ -217,7 +217,7 @@ proxy-groups:
       - US AUTO
   - icon: https://raw.githubusercontent.com/Tom-Smithman/mini/master/Color/HK.png
     include-all: true
-    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|hysteria2|hy2
+    exclude-filter: (?i)GB|Traffic|Expire|Premium|频道|订阅|ISP|流量|到期|重置|专线
     filter: (?i)香港|Hong Kong|HK|🇭🇰
     name: HK AUTO
     type: url-test
