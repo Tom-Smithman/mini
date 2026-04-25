@@ -73,22 +73,23 @@ Liangxin-订阅=https://liangxin.xyz/api/v1/liangxin?OwO=6e076b63adbf81adf492b89
 全球节点=NameRegex, FilterKey="^(?=.*(.))(?!.*((?i)群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|超时|收藏|福利|邀请|好友|失联|(\b(USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|Traffic)(\d+)?\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$"
 
 [Proxy Group]
+默认节点=select, 香港自动策略, 台湾自动策略, 日本自动策略, 韩国自动策略, 新国自动策略, 美国自动策略
 # 手动策略组 
-YouTube=select, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/YouTube.png 
-Telegram=select, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Telegram.png 
-Apple Account=select, DIRECT, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png 
-App Store=select, DIRECT, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/Other_icon/120px/AppStore.png 
+YouTube=select, 默认节点, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/YouTube.png 
+Telegram=select, 默认节点, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Telegram.png 
+Apple Account=select, 默认节点, DIRECT, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Apple.png 
+App Store=select, 默认节点, DIRECT, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/Other_icon/120px/AppStore.png 
 国内下载CDN=select, DIRECT, 全球节点, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China_Map.png 
-国际下载CDN=select, DIRECT, 全球节点, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Europe_Map.png 
-AI=select, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/ChatGPT.png 
-Speedtest Intl=select, 全球节点, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/OoklaSpeedtest.png 
-TikTok=select, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/TikTok.png 
-Netflix=select, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Netflix.png 
-Disney=select, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Disney+.png 
-Prime Video=select, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/PrimeVideo.png 
-Discovery Plus=select, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Discovery+.png 
-游戏手动=select, 游戏节点, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png 
-全球手动=select, 全球节点, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
+国际下载CDN=select, 默认节点, DIRECT, 全球节点, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Europe_Map.png 
+AI=select, 默认节点, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/ChatGPT.png 
+Speedtest Intl=select, 默认节点, 全球节点, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/OoklaSpeedtest.png 
+TikTok=select, 默认节点, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/TikTok.png 
+Netflix=select, 默认节点, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Netflix.png 
+Disney=select, 默认节点, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Disney+.png 
+Prime Video=select, 默认节点, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/PrimeVideo.png 
+Discovery Plus=select, 默认节点, 香港自动场景, 台湾自动场景, 日本自动场景, 韩国自动场景, 新国自动场景, 美国自动场景, img-url=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Discovery+.png 
+游戏手动=select, 默认节点, 游戏节点, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png 
+全球手动=select, 默认节点, 全球节点, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
 
 # --------------------------------
 # 场景策略
