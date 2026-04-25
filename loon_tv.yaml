@@ -10,7 +10,6 @@
 # 请勿修改远程CN REGION规则的排序甚至删除
 
 
-Rule, https://raw.githubusercontent.com/binaryu/emos-proxy-rule/main/rules/emos-loon.list,DIRECT
 IP-CIDR, 28.0.0.1/8, DIRECT
 IP-CIDR, 198.18.0.1/16, DIRECT
 IP-CIDR, 198.18.0.0/15, DIRECT
@@ -138,7 +137,7 @@ https://kelee.one/Tool/Loon/Lsr/ChinaDownloadCDN.lsr, policy=国内下载CDN, ta
 https://kelee.one/Tool/Loon/Lsr/InternationalDownloadCDN.lsr, policy=国际下载CDN, tag=国际下载CDN, enabled=true 
 https://kelee.one/Tool/Loon/Lsr/LAN_SPLITTER.lsr, policy=DIRECT, tag=LAN, enabled=true 
 https://kelee.one/Tool/Loon/Lsr/REGION_SPLITTER.lsr, policy=DIRECT, tag=CN REGION, enabled=true
-
+https://raw.githubusercontent.com/binaryu/emos-proxy-rule/main/rules/emos-loon.list,policy=DIRECT, tag=emos, enabled=true
 
 [Host]
 ssid: PHICOMM_5G=server: 10.0.0.1
