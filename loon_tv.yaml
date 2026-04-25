@@ -8,15 +8,9 @@
 # 当配置文件中存在有效的策略组时，内置的PROXY策略组将不再允许被调用，仅可使用用户配置的策略组
 # 配置文件已自带远程GEOIP, cn, DIRECT规则，请勿在此添加
 # 请勿修改远程CN REGION规则的排序甚至删除
-IP-CIDR,10.0.0.0/8,DIRECT
-IP-CIDR,172.16.0.0/12,DIRECT
-IP-CIDR,192.168.0.0/16,DIRECT
-IP-CIDR,127.0.0.0/8,DIRECT
-IP-CIDR,169.254.0.0/16,DIRECT
-IP-CIDR6,fc00::/7,DIRECT
-IP-CIDR6,fe80::/10,DIRECT
 
 
+https://raw.githubusercontent.com/binaryu/emos-proxy-rule/main/rules/emos-loon.list, DIRECT
 IP-CIDR, 28.0.0.1/8, DIRECT
 IP-CIDR, 198.18.0.1/16, DIRECT
 IP-CIDR, 198.18.0.0/15, DIRECT
@@ -33,7 +27,6 @@ DOMAIN-SUFFIX,115,DIRECT
 DOMAIN-SUFFIX,bing.com,DIRECT
 DOMAIN-SUFFIX,ieee.org,DIRECT
 DOMAIN-SUFFIX,codetop.cc,DIRECT
-DOMAIN-KEYWORD,emos,DIRECT
 DOMAIN-SUFFIX,emby.yun,DIRECT  
 DOMAIN-KEYWORD,ciallo.party,DIRECT
 DOMAIN-KEYWORD,clarivate.cn,DIRECT
@@ -145,6 +138,7 @@ https://kelee.one/Tool/Loon/Lsr/ChinaDownloadCDN.lsr, policy=国内下载CDN, ta
 https://kelee.one/Tool/Loon/Lsr/InternationalDownloadCDN.lsr, policy=国际下载CDN, tag=国际下载CDN, enabled=true 
 https://kelee.one/Tool/Loon/Lsr/LAN_SPLITTER.lsr, policy=DIRECT, tag=LAN, enabled=true 
 https://kelee.one/Tool/Loon/Lsr/REGION_SPLITTER.lsr, policy=DIRECT, tag=CN REGION, enabled=true
+
 
 [Host]
 ssid: PHICOMM_5G=server: 10.0.0.1
