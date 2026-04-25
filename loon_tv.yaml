@@ -10,7 +10,7 @@
 # 请勿修改远程CN REGION规则的排序甚至删除
 
 
-https://raw.githubusercontent.com/binaryu/emos-proxy-rule/main/rules/emos-loon.list,DIRECT
+Rule, https://raw.githubusercontent.com/binaryu/emos-proxy-rule/main/rules/emos-loon.list,DIRECT
 IP-CIDR, 28.0.0.1/8, DIRECT
 IP-CIDR, 198.18.0.1/16, DIRECT
 IP-CIDR, 198.18.0.0/15, DIRECT
