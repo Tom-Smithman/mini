@@ -61,7 +61,7 @@ bypass-tun=10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12
 [Proxy]
 
 [Remote Proxy]
-Liangxin-订阅=https://liangxin.xyz/api/v1/liangxin?OwO=6e076b63adbf81adf492b895174d6f17
+Liangxin-订阅=http://192.168.2.4:38325/download/%E8%89%AF%E5%BF%83%E4%BA%91
 
 [Remote Filter]
 香港节点=NameRegex, FilterKey="^(?=.*((?i)🇭🇰|香港|(\b(HK|HKG|Hong)(\d+)?\b)))(?!.*((?i)回国|校园|游戏|专线|🎮|(\b(GAME)\b))).*$"
