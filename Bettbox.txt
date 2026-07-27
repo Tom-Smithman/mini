@@ -1,21 +1,21 @@
 // rules 预定义
 const rules = [
-	  "DOMAIN-SUFFIX,10.253.0.235,DIRECT",  
-	  "DOMAIN-SUFFIX,fromcoast.top,DIRECT",
-	  "DOMAIN-SUFFIX,hhanclub.top,DIRECT", 
-	  "DOMAIN-SUFFIX,tieba.baidu.com,DIRECT", 
-	  "DOMAIN-SUFFIX,micu.hk,DIRECT", 
-   "DOMAIN-SUFFIX,uestc.edu.cn,DIRECT",
-	  "DOMAIN-SUFFIX,m-team.cc,DIRECT",
-	  "DOMAIN-SUFFIX,labuladong.online,默认节点",
-	  "DOMAIN-SUFFIX,nowcoder.com,DIRECT", 
-	  "DOMAIN-SUFFIX,115,DIRECT", 
-   "DOMAIN-SUFFIX,bing.com,DIRECT",
-   "DOMAIN-SUFFIX,ieee.org,DIRECT",
-   "DOMAIN-SUFFIX,codetop.cc,DIRECT",
-   "DOMAIN-KEYWORD,wangjunqiang,DIRECT",
-   "DOMAIN-KEYWORD,lyezi,DIRECT",
-   "DOMAIN-KEYWORD,emos,DIRECT",
+	"DOMAIN-SUFFIX,10.253.0.235,DIRECT",  
+	"DOMAIN-SUFFIX,fromcoast.top,DIRECT",
+	"DOMAIN-SUFFIX,hhanclub.top,DIRECT", 
+	"DOMAIN-SUFFIX,tieba.baidu.com,DIRECT", 
+	"DOMAIN-SUFFIX,micu.hk,DIRECT", 
+    "DOMAIN-SUFFIX,uestc.edu.cn,DIRECT",
+    "DOMAIN-SUFFIX,m-team.cc,DIRECT",
+    "DOMAIN-SUFFIX,labuladong.online,默认节点",
+    "DOMAIN-SUFFIX,nowcoder.com,DIRECT", 
+    "DOMAIN-SUFFIX,115,DIRECT", 
+    "DOMAIN-SUFFIX,bing.com,DIRECT",
+    "DOMAIN-SUFFIX,ieee.org,DIRECT",
+    "DOMAIN-SUFFIX,codetop.cc,DIRECT",
+    "DOMAIN-KEYWORD,wangjunqiang,DIRECT",
+    "DOMAIN-KEYWORD,lyezi,DIRECT",
+    "DOMAIN-KEYWORD,emos,DIRECT",
    
   // 私有网络直连
   'RULE-SET,private,直连',
@@ -80,6 +80,7 @@ const regionDefinitionsEnable = {
   '🇨🇦 加拿大': true,
   '🇦🇺 澳大利亚': true,
   '🇷🇺 俄罗斯': true,
+  '🌏 低倍率(HK/JP/SG)': true,
   '⛵ 低倍率节点': true,
   '✈️ 高倍率节点': true,
 };
@@ -87,6 +88,11 @@ const regionDefinitionsEnable = {
 
 // 地区定义
 const regionDefinitions = [
+   {
+  name: '🌏 低倍率(HK/JP/SG)',
+  regex: /^(?=.*(?:港|香港|🇭🇰|HK|[Hh]ong\s*[Kk]ong|日本|🇯🇵|JP|[Jj]apan|新加坡|狮城|🇸🇬|SG|[Ss]ingapore))(?=.*(?:0\.[1-9]\s*[xX倍]?|低倍|下载|(?:电信|移动|联通)?优化))(?!.*(?:家宽|住宅|Residential|Home|家用|宽带|Broadband|IPLC|IEPL|专线|HKT|CMI|9929|AS4837))(?!.*(?:[*xX✕✖⨉]\s*(?:[2-9]\d*|[1-9]\d+\.\d*)|(?:[2-9]\d*|[1-9]\d+\.\d*)\s*倍))/u,
+  icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png',
+},
   {
     name: '🇭🇰 香港',
     regex: /(?=.*(港|🇭🇰|HK|[Hh]ong\s*[Kk]ong))/u,
@@ -511,13 +517,24 @@ function main(config) {
   for (const proxy of proxies) {
     const name = proxy.name;
 
-    if (
-      regionDefinitionsEnable['⛵ 低倍率节点'] &&
-      regionDefinitions.find((r) => r.name === '⛵ 低倍率节点').regex.test(name)
-    ) {
-      lowGroup.proxies.push(name);
-      continue;
-    }
+    // HK/JP/SG 低倍率优先
+  const lowAsia = regionGroups['🌏 低倍率(HK/JP/SG)'];
+  
+  if (
+    regionDefinitionsEnable['🌏 低倍率(HK/JP/SG)'] &&
+    regionDefinitions.find(r => r.name === '🌏 低倍率(HK/JP/SG)').regex.test(name)
+  ) {
+    lowAsia.proxies.push(name);
+    continue;
+  }
+  
+  if (
+    regionDefinitionsEnable['⛵ 低倍率节点'] &&
+    regionDefinitions.find(r => r.name === '⛵ 低倍率节点').regex.test(name)
+  ) {
+    lowGroup.proxies.push(name);
+    continue;
+  }
 
     if (
       regionDefinitionsEnable['✈️ 高倍率节点'] &&
@@ -535,8 +552,12 @@ function main(config) {
     let matched = false;
 
     for (const region of regionDefinitions) {
-      if (region.name === '⛵ 低倍率节点' || region.name === '✈️ 高倍率节点')
-        continue;
+      if (
+    region.name === '🌏 低倍率(HK/JP/SG)' ||
+    region.name === '⛵ 低倍率节点' ||
+    region.name === '✈️ 高倍率节点'
+)
+    continue;
 
       if (region.regex.test(name) && regionDefinitionsEnable[region.name]) {
         regionGroups[region.name].proxies.push(name);
