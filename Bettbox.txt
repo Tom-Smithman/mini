@@ -21,9 +21,6 @@ const rules = [
   'RULE-SET,private,直连',
   'RULE-SET,private_ip,直连,no-resolve',
 
-  // 进程规则
-  'RULE-SET,DownloadApps,下载专用', // 常见磁力下载软件
-
   // 国内直连
   'RULE-SET,steam_cn,直连',
   'RULE-SET,epicgames,直连',
@@ -204,12 +201,6 @@ const ruleProviders = {
     ...ruleProviderFormatMrs,
     url: 'https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.mrs',
     path: './ruleset/AWAvenue_Ads.mrs',
-  },
-  DownloadApps: {
-    ...ruleProviderCommonClassical,
-    ...ruleProviderFormatText,
-    url: 'https://raw.githubusercontent.com/AIsouler/MyClash/main/rules/DownloadApps.txt',
-    path: './ruleset/DownloadApps.txt',
   },
   fakeip_filter: {
     ...ruleProviderCommonDomain,
@@ -649,13 +640,6 @@ function main(config) {
 
   // 添加其他策略组
   functionalGroups.push(
-    {
-      ...groupBaseOption,
-      name: '下载专用',
-      type: 'select',
-      proxies: ['直连', '默认节点'],
-      icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Download.png',
-    },
     {
       ...groupBaseOption,
       name: '直连',
