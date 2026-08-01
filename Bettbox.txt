@@ -617,13 +617,27 @@ function main(config) {
         groupProxies = ['直连', '默认节点', ...regionGroupNames];
       } else {
   if (svc.key === 'ai') {
-    const aiPriority = ['🇸🇬 新加坡', '🇯🇵 日本', '🇺🇸 美国'];
-    groupProxies = [
-      ...aiPriority,
-      '默认节点',
-      ...regionGroupNames.filter(p => !aiPriority.includes(p))
-    ];
-  } else {
+  const aiPriority = [
+    '🇸🇬 新加坡',
+    '🇯🇵 日本',
+    '🇺🇸 美国'
+  ];
+
+  const aiExclude = [
+    '🇭🇰 香港',
+    '🌏 低倍率(HK/JP/SG)',
+    '⛵ 低倍率节点',
+    '✈️ 高倍率节点'
+  ];
+
+  groupProxies = [
+    ...aiPriority,
+    '默认节点',
+    ...regionGroupNames.filter(
+      p => !aiPriority.includes(p) && !aiExclude.includes(p)
+    )
+  ];
+} else {
     groupProxies = ['默认节点', ...regionGroupNames];
   }
 }
