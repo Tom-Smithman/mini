@@ -61,7 +61,7 @@ bypass-tun=10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12
 [Proxy]
 
 [Remote Proxy]
-Liangxin-订阅=http://192.168.2.4:38325/download/%E8%89%AF%E5%BF%83%E4%BA%91
+Liangxin-订阅=https://sub.xnyun.wiki/xxntoken=/080073a07f04f196e99d91ebdad9a1c6
 
 [Remote Filter]
 低倍率节点=NameRegex, FilterKey="^(?=.*(?:港|香港|🇭🇰|\bHK\b|[Hh]ong\s*[Kk]ong|新加坡|狮城|🇸🇬|\bSG\b|[Ss]ingapore))(?=.*(?:0\.\d+\s*(?:[xX]|倍|倍率)?|低倍|下载|优化))(?!.*(?:家宽|住宅|Residential|Home|家用|宽带|Broadband|IPLC|IEPL|专线|HKT|CMI|9929|AS4837))(?!.*(?:[1-9][0-9]*(?:\.[0-9]+)?\s*(?:[xX×✕✖⨉倍倍率])|[xX×✕✖⨉]\s*[1-9][0-9]*(?:\.[0-9]+)?)).*$"
