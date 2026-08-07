@@ -363,6 +363,15 @@ const serviceConfigs = [
     rules: ['RULE-SET,ai,国外AI'],
   },
   {
+    key: 'telegram',
+    name: 'Telegram',
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png',
+    rules: [
+      'RULE-SET,telegram,Telegram',
+      'RULE-SET,telegram_ip,Telegram,no-resolve',
+    ],
+  },
+  {
     key: 'youtube',
     name: 'YouTube',
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png',
@@ -373,12 +382,6 @@ const serviceConfigs = [
     ],
   },
   {
-    key: 'googlefcm',
-    name: 'FCM服务',
-    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png',
-    rules: ['RULE-SET,googlefcm,FCM服务'],
-  },
-  {
     key: 'google',
     name: '谷歌服务',
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png',
@@ -386,6 +389,18 @@ const serviceConfigs = [
       'RULE-SET,google,谷歌服务',
       'RULE-SET,google_ip,谷歌服务,no-resolve',
     ],
+  },
+  {
+    key: 'steam',
+    name: 'Steam',
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png',
+    rules: ['RULE-SET,steam,Steam'],
+  },
+  {
+    key: 'googlefcm',
+    name: 'FCM服务',
+    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png',
+    rules: ['RULE-SET,googlefcm,FCM服务'],
   },
   {
     key: 'github',
@@ -400,15 +415,6 @@ const serviceConfigs = [
     rules: ['RULE-SET,microsoft,微软服务'],
   },
   {
-    key: 'telegram',
-    name: 'Telegram',
-    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png',
-    rules: [
-      'RULE-SET,telegram,Telegram',
-      'RULE-SET,telegram_ip,Telegram,no-resolve',
-    ],
-  },
-  {
     key: 'pixiv',
     name: 'Pixiv',
     icon: 'https://play-lh.googleusercontent.com/Ls9opXo6-wfEWmbBU8heJaFS8HwWydssWE1J3vexIGvkF-UJDqcW7ZMD8w6dQABfygONd4z3Yt4TfRDZAPYq=w480-h960-rw',
@@ -417,12 +423,6 @@ const serviceConfigs = [
       'PROCESS-NAME,com.perol.pixez,Pixiv', // Pixez
       'PROCESS-NAME,com.perol.play.pixez,Pixiv', // Pixez Google Play 版
     ],
-  },
-  {
-    key: 'steam',
-    name: 'Steam',
-    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png',
-    rules: ['RULE-SET,steam,Steam'],
   },
   {
     key: 'twitter',
