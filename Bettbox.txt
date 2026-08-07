@@ -46,14 +46,14 @@ const enable = true;
 const ruleOptionsEnable = {
   ai: true, // 国外AI
   youtube: true, // YouTube
-  googlefcm: true, // FCM服务
+  telegram: true, // Telegram通讯软件
   google: true, // Google服务
+  steam: true, // Steam游戏平台
+  googlefcm: true, // FCM服务
   github: true, // GitHub服务
   microsoft: true, // 微软服务
-  telegram: true, // Telegram通讯软件
-  twitter: true, // Twitter社交平台
-  steam: true, // Steam游戏平台
-  pixiv: true, // Pixiv绘画网站
+  twitter: false, // Twitter社交平台
+  pixiv: false, // Pixiv绘画网站
   emby: true, // Emby媒体服务
   adblock: true, // 广告拦截
 };
