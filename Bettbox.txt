@@ -346,6 +346,7 @@ const ruleProviders = {
     url: 'https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Emby.mrs',
     path: './ruleset/emby.mrs',
   },
+#https://github.com/666OS/rules/blob/release/mihomo/domain/Emby.txt
   emby_ip: {
     ...ruleProviderCommonIpcidr,
     ...ruleProviderFormatMrs,
