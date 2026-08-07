@@ -637,9 +637,16 @@ function main(config) {
       p => !aiPriority.includes(p) && !aiExclude.includes(p)
     )
   ];
+} else if (svc.key === 'youtube' || svc.key === 'emby') {
+
+  groupProxies = [
+    '🌏 低倍率(HK/JP/SG)',
+    '⛵ 低倍率节点'
+  ];
+
 } else {
-    groupProxies = ['默认节点', ...regionGroupNames];
-  }
+  groupProxies = ['默认节点', ...regionGroupNames];
+}
 }
 
       functionalGroups.push({
