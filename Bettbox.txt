@@ -30,7 +30,7 @@ const rules = [
 // --- 1. 静态配置区域 ---
 
 // 脚本链接：https://raw.githubusercontent.com/AIsouler/MyClash/refs/heads/main/Script/mihomoScript.js
-
+https://raw.githubusercontent.com/Tom-Smithman/mini/refs/heads/master/Bettbox.txt
 /**
  * 整个脚本的总开关
  * true = 启用
@@ -346,7 +346,7 @@ const ruleProviders = {
     url: 'https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Emby.mrs',
     path: './ruleset/emby.mrs',
   },
-#https://github.com/666OS/rules/blob/release/mihomo/domain/Emby.txt
+//https://github.com/666OS/rules/blob/release/mihomo/domain/Emby.txt
   emby_ip: {
     ...ruleProviderCommonIpcidr,
     ...ruleProviderFormatMrs,
