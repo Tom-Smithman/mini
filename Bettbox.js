@@ -1,4 +1,4 @@
-//https://raw.githubusercontent.com/Tom-Smithman/mini/refs/heads/master/Bettbox.txt
+//https://raw.githubusercontent.com/Tom-Smithman/mini/refs/heads/master/Bettbox.js
 // rules 预定义
 const rules = [
 	"DOMAIN-SUFFIX,10.253.0.235,DIRECT",  
@@ -31,7 +31,6 @@ const rules = [
 // --- 1. 静态配置区域 ---
 
 // 脚本链接：https://raw.githubusercontent.com/AIsouler/MyClash/refs/heads/main/Script/mihomoScript.js
-//https://raw.githubusercontent.com/Tom-Smithman/mini/refs/heads/master/Bettbox.txt
 /**
  * 整个脚本的总开关
  * true = 启用
