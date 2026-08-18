@@ -36,6 +36,9 @@ const rules = [
  * true = 启用
  * false = 禁用
  */
+
+// 适配 Bettbox 自定义配置参数
+const Compatible_With_Bettbox = { ruleOptionsEnable: true };
 const enable = true;
 
 /**
