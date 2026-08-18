@@ -887,7 +887,7 @@ function main(config) {
   };
 
   config['tun'] = {
-    enable: true,
+    enable: false,
     stack: 'system',
     'auto-route': true,
     'auto-redirect': true,
