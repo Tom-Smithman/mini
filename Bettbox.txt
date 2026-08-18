@@ -696,7 +696,71 @@ function main(config) {
   );
 
   // 组装最终结果
-  config['proxy-groups'] = [...functionalGroups, ...generatedRegionGroups];
+    // --- 策略组引用安全检查 ---
+  // 防止某个策略组引用了没有实际生成的策略组，导致 Mihomo 报：
+  // "proxy group xxx: proxy 'xxx' not found"
+  //
+  // 例如：
+  // 订阅中没有日本节点
+  // → 🇯🇵 日本地区组不会生成
+  // → AI 组如果仍然引用 🇯🇵 日本
+  // → Mihomo 启动失败
+  //
+  // 这里统一过滤所有不存在的策略组引用。
+
+  const allGeneratedGroupNames = new Set([
+    ...generatedRegionGroups.map((group) => group.name),
+    ...functionalGroups.map((group) => group.name),
+  ]);
+
+  // DIRECT / REJECT / REJECT-DROP / PASS 等内置策略也属于合法引用
+  const builtinProxies = new Set([
+    'DIRECT',
+    'REJECT',
+    'REJECT-DROP',
+    'PASS',
+  ]);
+
+  for (const group of functionalGroups) {
+    if (!Array.isArray(group.proxies)) continue;
+
+    // 只保留：
+    // 1. 已经实际生成的策略组
+    // 2. Mihomo 内置策略
+    // 3. 原始代理节点
+    group.proxies = group.proxies.filter((proxyName) => {
+      if (builtinProxies.has(proxyName)) {
+        return true;
+      }
+
+      // 已生成的策略组
+      if (allGeneratedGroupNames.has(proxyName)) {
+        return true;
+      }
+
+      // 原始代理节点
+      if (proxies.some((proxy) => proxy.name === proxyName)) {
+        return true;
+      }
+
+      return false;
+    });
+
+    // 如果一个功能组的所有候选项都不存在，
+    // 自动回退到“默认节点”，避免产生空策略组。
+    if (
+      group.proxies.length === 0 &&
+      group.name !== '默认节点'
+    ) {
+      group.proxies = ['默认节点'];
+    }
+  }
+
+  // 最后再生成完整策略组
+  config['proxy-groups'] = [
+    ...functionalGroups,
+    ...generatedRegionGroups,
+  ];
   config['rule-providers'] = ruleProviders;
   config['rules'] = [
     ...rules,
@@ -820,7 +884,7 @@ function main(config) {
   };
 
   config['tun'] = {
-    enable: false,
+    enable: true,
     stack: 'system',
     'auto-route': true,
     'auto-redirect': true,
