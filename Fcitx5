@@ -43,7 +43,9 @@ Troubleshooting
 If candidate windows appear in the wrong position, check Wayland/X11 session settings and ensure environment variables are correctly set.
 Some applications may require a restart to recognize Fcitx5.
 To remove IBus completely (optional), run:
+``
 sudo apt purge -y ibus
 sudo apt autoremove -y
+``
 Summary
 Fcitx5 provides a flexible and visually customizable input method experience on Ubuntu. Proper installation, environment variable configuration, and autostart setup are essential for smooth operation, especially when using Wayland or integrating Rime for Chinese input
