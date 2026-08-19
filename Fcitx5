@@ -1,0 +1,49 @@
+Fcitx5 is a highly customizable input method framework for Ubuntu, supporting Chinese input and other languages, and can be fully integrated with Wayland or X11 sessions.
+Installation
+For Ubuntu 22.04 and later, Fcitx5 and its components are available in the official repositories. To install the core packages and Chinese input support:
+``
+sudo apt update
+sudo apt install -y fcitx5 fcitx5-rime fcitx5-chinese-addons
+``
+If you previously installed Fcitx4, it should be completely removed to avoid conflicts:
+``
+sudo apt purge -y fcitx4
+sudo apt autoremove -y
+``
+After installation, log out and log back in to ensure the new framework is active.
+
+Configuring Fcitx5
+Set Fcitx5 as the default input method using im-config:
+``
+im-config -n fcitx5
+``
+Environment variables are necessary to ensure proper input in all applications, especially under Wayland. Add the following to ~/.bashrc, ~/.zshrc, or /etc/profile:
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export SDL_IM_MODULE=fcitx
+Note: Use fcitx (not fcitx5) for the module names to avoid loading errors.
+3. Autostart configuration ensures Fcitx5 launches on login. Create a desktop entry:
+``
+mkdir -p ~/.config/autostart
+cat > ~/.config/autostart/fcitx5.desktop << 'EOF'
+[Desktop Entry]
+Type=Application
+Name=Fcitx5
+Exec=fcitx5
+Comment=Start Fcitx5 input method
+EOF
+``
+Using Fcitx5 with Rime
+Open the Fcitx5 configuration GUI from the system tray.
+Add Rime (中州韵) as an input method and remove default Pinyin or English if desired.
+Adjust global shortcuts to avoid conflicts with Rime’s built-in switching keys.
+For custom Rime configurations (like rime_ice.schema.yaml), comment out unwanted auto-corrections and deploy changes via the Rime menu.
+Troubleshooting
+If candidate windows appear in the wrong position, check Wayland/X11 session settings and ensure environment variables are correctly set.
+Some applications may require a restart to recognize Fcitx5.
+To remove IBus completely (optional), run:
+sudo apt purge -y ibus
+sudo apt autoremove -y
+Summary
+Fcitx5 provides a flexible and visually customizable input method experience on Ubuntu. Proper installation, environment variable configuration, and autostart setup are essential for smooth operation, especially when using Wayland or integrating Rime for Chinese input
