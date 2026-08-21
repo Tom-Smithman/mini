@@ -1,6 +1,7 @@
 //https://raw.githubusercontent.com/Tom-Smithman/mini/refs/heads/master/Bettbox.js
 // rules 预定义
 const rules = [
+	"DOMAIN-KEYWORD,yusen,DIRECT",
 	"DOMAIN-SUFFIX,10.253.0.235,DIRECT",  
 	"DOMAIN-SUFFIX,fromcoast.top,DIRECT",
 	"DOMAIN-SUFFIX,hhanclub.top,DIRECT", 
