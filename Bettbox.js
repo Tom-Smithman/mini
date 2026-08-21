@@ -600,15 +600,29 @@ function main(config) {
   // 构建功能策略组
   const functionalGroups = [];
 
-  functionalGroups.push({
-    ...groupBaseOption,
-    name: '默认节点',
-    type: 'select',
-    proxies: [...regionGroupNames, '其他节点'].filter(
-      (n) => n !== '其他节点' || otherProxies.length > 0,
-    ),
-    icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png',
-  });
+  // 默认节点优先级：香港 → 低倍率节点 → 新加坡 → 美国 → 其他
+const defaultPriority = [
+  '🇭🇰 香港',
+  '⛵ 低倍率节点',
+  '🇸🇬 新加坡',
+  '🇺🇸 美国',
+];
+
+const defaultRegionGroups = [
+  ...defaultPriority.filter((name) => regionGroupNames.includes(name)),
+  ...regionGroupNames.filter((name) => !defaultPriority.includes(name)),
+];
+
+functionalGroups.push({
+  ...groupBaseOption,
+  name: '默认节点',
+  type: 'select',
+  proxies: [
+    ...defaultRegionGroups,
+    ...(otherProxies.length > 0 ? ['其他节点'] : []),
+  ],
+  icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png',
+});
 
   serviceConfigs.forEach((svc) => {
     if (ruleOptionsEnable[svc.key]) {
