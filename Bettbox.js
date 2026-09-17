@@ -90,7 +90,7 @@ const regionDefinitionsEnable = {
 const regionDefinitions = [
    {
   name: '🌏 低倍率(HK/JP/SG)',
-  regex: /^(?=.*(?:港|香港|🇭🇰|HK|[Hh]ong\s*[Kk]ong|新加坡|狮城|🇸🇬|SG|[Ss]ingapore))(?=.*(?:0\.[1-9]\s*[xX倍]?|低倍|下载|优化|实验性))(?!.*(?:家宽|住宅|Residential|Home|家用|宽带|Broadband|IPLC|IEPL|专线|HKT|CMI|9929|AS4837))(?!.*(?:[1-9]\d*(?:\.\d+)?\s*(?:[xX×✕✖⨉倍倍率])|[xX×✕✖⨉]\s*[1-9]\d*(?:\.\d+)?))/u,
+  regex: /^(?=.*(?:港|香港|🇭🇰|HK|[Hh]ong\s*[Kk]ong|新加坡|狮城|🇸🇬|SG|[Ss]ingapore))(?=.*(?:0\.[1-9]\s*[xX倍]?|低倍|下载|优化|实验性))(?!.*(?:家宽|住宅|Residential|Home|家用|宽带|Broadband|IPLC|IEPL|专线|HKT|CMI|9929|AS4837|AWS))(?!.*(?:[1-9]\d*(?:\.\d+)?\s*(?:[xX×✕✖⨉倍倍率])|[xX×✕✖⨉]\s*[1-9]\d*(?:\.\d+)?))/u,
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png',
   },
   {
