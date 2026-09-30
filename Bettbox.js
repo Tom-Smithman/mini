@@ -16,7 +16,7 @@ const rules = [
     "DOMAIN-SUFFIX,codetop.cc,DIRECT",
     "DOMAIN-KEYWORD,wangjunqiang,DIRECT",
     "DOMAIN-KEYWORD,lyezi,DIRECT",
-    "DOMAIN-KEYWORD,emos,DIRECT",
+    "DOMAIN-KEYWORD,emos,DIRECT",                 "DOMAIN-KEYWORD,v.chilledmelon.com,DIRECT",
    
   // 私有网络直连
   'RULE-SET,private,直连',
