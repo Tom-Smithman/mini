@@ -19,33 +19,33 @@ const rules = [
     "DOMAIN-KEYWORD,emos,DIRECT",                 
 	"DOMAIN-KEYWORD,v.chilledmelon.com,DIRECT",
 	# [0] 矩阵通用服务
-    "DOMAIN-SUFFIX,gdzhimou.com,DIRECT"
+    "DOMAIN-SUFFIX,gdzhimou.com,DIRECT",
 
     # [1] B 站 / 哔哩哔哩
-	"DOMAIN-KEYWORD,bilibili,DIRECT"        # bilibili.com / bilibili.tv
-	"DOMAIN-KEYWORD,bilivideo,DIRECT"       # bilivideo.com / bilivideo.cn
-	"DOMAIN-KEYWORD,biliapi,DIRECT"         # biliapi.net / biliapi.com
-	"DOMAIN-SUFFIX,hdslb.com,DIRECT"
-	"DOMAIN-SUFFIX,acg.tv,DIRECT"
-	"DOMAIN-SUFFIX,acgvideo.com,DIRECT"
-	"DOMAIN-SUFFIX,biliimg.com,DIRECT"
-	"DOMAIN-SUFFIX,b23.tv,DIRECT"
-	"DOMAIN-SUFFIX,bsbsb.top,DIRECT"
+	"DOMAIN-KEYWORD,bilibili,DIRECT",        # bilibili.com / bilibili.tv
+	"DOMAIN-KEYWORD,bilivideo,DIRECT",       # bilivideo.com / bilivideo.cn
+	"DOMAIN-KEYWORD,biliapi,DIRECT",         # biliapi.net / biliapi.com
+	"DOMAIN-SUFFIX,hdslb.com,DIRECT",
+	"DOMAIN-SUFFIX,acg.tv,DIRECT",
+	"DOMAIN-SUFFIX,acgvideo.com,DIRECT",
+	"DOMAIN-SUFFIX,biliimg.com,DIRECT",
+	"DOMAIN-SUFFIX,b23.tv,DIRECT",
+	"DOMAIN-SUFFIX,bsbsb.top,DIRECT",
 
 	# [2] 抖音 / 字节跳动
-	"DOMAIN-KEYWORD,douyin,DIRECT"          # douyin.com / douyinvod / idouyinvod / douyinpic / douyincdn / douyinstatic / iesdouyin
-	"DOMAIN-KEYWORD,ixigua,DIRECT"          # ixigua.com / ixiguavideo.com
-	"DOMAIN-SUFFIX,bytednsdoc.com,DIRECT"
-	"DOMAIN-SUFFIX,bytedance.com,DIRECT"
-	"DOMAIN-SUFFIX,byteimg.com,DIRECT"
-	"DOMAIN-SUFFIX,bytevod.com,DIRECT"
-	"DOMAIN-SUFFIX,bytetos.com,DIRECT"
-	"DOMAIN-SUFFIX,amemv.com,DIRECT"
-	"DOMAIN-SUFFIX,snssdk.com,DIRECT"
-	"DOMAIN-SUFFIX,zijieapi.com,DIRECT"
-	"DOMAIN-SUFFIX,pstatp.com,DIRECT"
-	"DOMAIN-SUFFIX,toutiao.com,DIRECT"
-	"DOMAIN-SUFFIX,v5-dy-o-abtest.zjcdn.com,DIRECT"
+	"DOMAIN-KEYWORD,douyin,DIRECT",          # douyin.com / douyinvod / idouyinvod / douyinpic / douyincdn / douyinstatic / iesdouyin
+	"DOMAIN-KEYWORD,ixigua,DIRECT",          # ixigua.com / ixiguavideo.com
+	"DOMAIN-SUFFIX,bytednsdoc.com,DIRECT",
+	"DOMAIN-SUFFIX,bytedance.com,DIRECT",
+	"DOMAIN-SUFFIX,byteimg.com,DIRECT",
+	"DOMAIN-SUFFIX,bytevod.com,DIRECT",
+	"DOMAIN-SUFFIX,bytetos.com,DIRECT",
+	"DOMAIN-SUFFIX,amemv.com,DIRECT",
+	"DOMAIN-SUFFIX,snssdk.com,DIRECT",
+	"DOMAIN-SUFFIX,zijieapi.com,DIRECT",
+	"DOMAIN-SUFFIX,pstatp.com,DIRECT",
+	"DOMAIN-SUFFIX,toutiao.com,DIRECT",
+	"DOMAIN-SUFFIX,v5-dy-o-abtest.zjcdn.com,DIRECT",
 
 
    
