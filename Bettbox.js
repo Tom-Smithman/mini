@@ -1,62 +1,32 @@
 //https://raw.githubusercontent.com/Tom-Smithman/mini/refs/heads/master/Bettbox.js
 // rules 预定义
 const rules = [
-  "DOMAIN-KEYWORD,yusen,DIRECT",
-  "DOMAIN-SUFFIX,fromcoast.top,DIRECT",
-  "DOMAIN-SUFFIX,hhanclub.top,DIRECT",
-  "DOMAIN-SUFFIX,tieba.baidu.com,DIRECT",
-  "DOMAIN-SUFFIX,micu.hk,DIRECT",
-  "DOMAIN-SUFFIX,uestc.edu.cn,DIRECT",
-  "DOMAIN-SUFFIX,m-team.cc,DIRECT",
-  "DOMAIN-SUFFIX,labuladong.online,默认节点",
-  "DOMAIN-SUFFIX,nowcoder.com,DIRECT",
-  "DOMAIN-SUFFIX,115.com,DIRECT",          // 原 "115" 不是有效后缀
-  "DOMAIN-SUFFIX,bing.com,DIRECT",
-  "DOMAIN-SUFFIX,ieee.org,DIRECT",
-  "DOMAIN-SUFFIX,codetop.cc,DIRECT",
-  "DOMAIN-KEYWORD,wangjunqiang,DIRECT",
-  "DOMAIN-KEYWORD,lyezi,DIRECT",
-  "DOMAIN-KEYWORD,emos,DIRECT",
-  "DOMAIN-KEYWORD,v.chilledmelon.com,DIRECT",
-
-  // [0] 矩阵通用服务
-  "DOMAIN-SUFFIX,gdzhimou.com,DIRECT",
-
-  // [1] B 站 / 哔哩哔哩
-  "DOMAIN-KEYWORD,bilibili,DIRECT",        // bilibili.com / bilibili.tv
-  "DOMAIN-KEYWORD,bilivideo,DIRECT",       // bilivideo.com / bilivideo.cn
-  "DOMAIN-KEYWORD,biliapi,DIRECT",         // biliapi.net / biliapi.com
-  "DOMAIN-SUFFIX,hdslb.com,DIRECT",
-  "DOMAIN-SUFFIX,acg.tv,DIRECT",
-  "DOMAIN-SUFFIX,acgvideo.com,DIRECT",
-  "DOMAIN-SUFFIX,biliimg.com,DIRECT",
-  "DOMAIN-SUFFIX,b23.tv,DIRECT",
-  "DOMAIN-SUFFIX,bsbsb.top,DIRECT",
-
-  // [2] 抖音 / 字节跳动
-  "DOMAIN-KEYWORD,douyin,DIRECT",          // douyin.com / douyinvod / idouyinvod / douyinpic / douyincdn / douyinstatic / iesdouyin
-  "DOMAIN-KEYWORD,ixigua,DIRECT",          // ixigua.com / ixiguavideo.com
-  "DOMAIN-SUFFIX,bytednsdoc.com,DIRECT",
-  "DOMAIN-SUFFIX,bytedance.com,DIRECT",
-  "DOMAIN-SUFFIX,byteimg.com,DIRECT",
-  "DOMAIN-SUFFIX,bytevod.com,DIRECT",
-  "DOMAIN-SUFFIX,bytetos.com,DIRECT",
-  "DOMAIN-SUFFIX,amemv.com,DIRECT",
-  "DOMAIN-SUFFIX,snssdk.com,DIRECT",
-  "DOMAIN-SUFFIX,zijieapi,DIRECT",
-  "DOMAIN-SUFFIX,pstatp.com,DIRECT",
-  "DOMAIN-SUFFIX,toutiao.com,DIRECT",
-  "DOMAIN-SUFFIX,v5-dy-o-abtest.zjcdn.com,DIRECT",
-
+	"DOMAIN-KEYWORD,yusen,DIRECT", 
+	"DOMAIN-SUFFIX,fromcoast.top,DIRECT",
+	"DOMAIN-SUFFIX,hhanclub.top,DIRECT", 
+	"DOMAIN-SUFFIX,tieba.baidu.com,DIRECT", 
+	"DOMAIN-SUFFIX,micu.hk,DIRECT", 
+    "DOMAIN-SUFFIX,uestc.edu.cn,DIRECT",
+    "DOMAIN-SUFFIX,m-team.cc,DIRECT",
+    "DOMAIN-SUFFIX,labuladong.online,默认节点",
+    "DOMAIN-SUFFIX,nowcoder.com,DIRECT", 
+    "DOMAIN-SUFFIX,115,DIRECT", 
+    "DOMAIN-SUFFIX,bing.com,DIRECT",
+    "DOMAIN-SUFFIX,ieee.org,DIRECT",
+    "DOMAIN-SUFFIX,codetop.cc,DIRECT",
+    "DOMAIN-KEYWORD,wangjunqiang,DIRECT",
+    "DOMAIN-KEYWORD,lyezi,DIRECT",
+    "DOMAIN-KEYWORD,emos,DIRECT",           "DOMAIN-KEYWORD,v.chilledmelon.com,DIRECT",
+   
   // 私有网络直连
-  "RULE-SET,private,直连",
-  "RULE-SET,private_ip,直连,no-resolve",
+  'RULE-SET,private,直连',
+  'RULE-SET,private_ip,直连,no-resolve',
 
   // 国内直连
-  "RULE-SET,steam_cn,直连",
-  "RULE-SET,epicgames,直连",
-  "RULE-SET,nvidia_cn,直连",
-  "RULE-SET,microsoft_cn,直连",
+  'RULE-SET,steam_cn,直连',
+  'RULE-SET,epicgames,直连',
+  'RULE-SET,nvidia_cn,直连',
+  'RULE-SET,microsoft_cn,直连',
 ];
 // --- 1. 静态配置区域 ---
 
@@ -120,94 +90,79 @@ const regionDefinitionsEnable = {
 const regionDefinitions = [
    {
   name: '🌏 低倍率(HK/JP/SG)',
-  regex: /^(?=.*(?:港|香港|🇭🇰|HK|[Hh]ong\s*[Kk]ong|新加坡|狮城|🇸🇬|SG|[Ss]ingapore))(?=.*(?:0\.[1-9]\s*[xX倍]?|低倍|下载|优化|实验性))(?!.*(?:家宽|住宅|Residential|Home|家用|宽带|Broadband|IPLC|IEPL|专线|HKT|CMI|HY2|9929|AS4837|AWS))(?!.*(?:[1-9]\d*(?:\.\d+)?\s*(?:[xX×✕✖⨉倍倍率])|[xX×✕✖⨉]\s*[1-9]\d*(?:\.\d+)?))/u,
+  regex: /^(?=.*(?:港|香港|🇭🇰|HK|[Hh]ong\s*[Kk]ong|新加坡|狮城|🇸🇬|SG|[Ss]ingapore))(?=.*(?:0\.[1-9]\s*[xX倍]?|低倍|下载|优化))(?!.*(?:家宽|住宅|Residential|Home|家用|宽带|Broadband|IPLC|IEPL|专线|HKT|CMI|9929|AS4837))(?!.*(?:[1-9]\d*(?:\.\d+)?\s*(?:[xX×✕✖⨉倍倍率])|[xX×✕✖⨉]\s*[1-9]\d*(?:\.\d+)?))/u,
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png',
-  exclude-type: "hysteria2|hysteria"   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇭🇰 香港',
     regex: /(?=.*(港|🇭🇰|HK|[Hh]ong\s*[Kk]ong))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png', 
-    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇯🇵 日本',
     regex: /(?=.*(日本|🇯🇵|JP|[Jj]apan))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png',
-    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇺🇸 美国',
     regex: /(?=.*(美|🇺🇸|US|[Aa]merica|[Uu]nited\s*[Ss]tates))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png',
-    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇸🇬 新加坡',
     regex: /(?=.*(新加坡|狮城|🇸🇬|SG|[Ss]ingapore))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png',
-    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇹🇼 台湾省',
     regex: /(?=.*(台湾|🇹🇼|TW|[Tt]ai\s*[Ww]an))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png',
-    exclude-type: "hysteria2|hysteria",  // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇰🇷 韩国',
     regex: /(?=.*(韩|🇰🇷|KR|[Kk]orea))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png',
-    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇬🇧 英国',
     regex: /(?=.*(英|🇬🇧|UK|[Uu]nited\s*[Kk]ingdom|[Bb]ritain))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_Kingdom.png',
-    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇩🇪 德国',
     regex: /(?=.*(德国|🇩🇪|DE|[Gg]ermany))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Germany.png',
-    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇫🇷 法国',
     regex: /(?=.*(法国|🇫🇷|FR|[Ff]rance))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/France.png',
-    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇨🇦 加拿大',
     regex: /(?=.*(加拿大|🇨🇦|CA|[Cc]anada))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Canada.png',
-    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇦🇺 澳大利亚',
     regex: /(?=.*(澳大利亚|🇦🇺|AU|[Aa]ustralia))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Australia.png',
-    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇷🇺 俄罗斯',
     regex: /(?=.*(俄罗斯|🇷🇺|RU|[Rr]ussia))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Russia.png',
-    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '⛵ 低倍率节点',
     regex: /^(?!.*(?:剩|期|客户端|软件)).*(?:(?<!\d)0\.[0-5]|下载|低倍)/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png',
-    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '✈️ 高倍率节点',
     regex:
       /(?:[*xX✕✖⨉]\s*(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?\s*(?:倍|[*xX✕✖⨉]))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Airport.png',
-    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
 ];
 
@@ -553,14 +508,21 @@ function main(config) {
   const otherProxies = [];
   const remainProxies = [];
 
+  // 是否为 Hysteria / Hysteria2 类型节点（按 type 判断，不依赖节点名）
+  // 注意：mihomo 策略组的 exclude-type 只对 include-all / include-all-proxies 生效，
+  // 本脚本的策略组用的是显式 proxies 列表，所以必须在 JS 里按 type 过滤。
+  const isHysteriaNode = (proxy) =>
+    /^hysteria2?$/i.test(String(proxy.type || ''));
+
   // 倍率分类
   for (const proxy of proxies) {
     const name = proxy.name;
 
     // HK/JP/SG 低倍率优先
   const lowAsia = regionGroups['🌏 低倍率(HK/JP/SG)'];
-  
+
   if (
+    !isHysteriaNode(proxy) &&
     regionDefinitionsEnable['🌏 低倍率(HK/JP/SG)'] &&
     regionDefinitions.find(r => r.name === '🌏 低倍率(HK/JP/SG)').regex.test(name)
   ) {
