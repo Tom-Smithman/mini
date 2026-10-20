@@ -122,6 +122,7 @@ const regionDefinitions = [
   name: '🌏 低倍率(HK/JP/SG)',
   regex: /^(?=.*(?:港|香港|🇭🇰|HK|[Hh]ong\s*[Kk]ong|新加坡|狮城|🇸🇬|SG|[Ss]ingapore))(?=.*(?:0\.[1-9]\s*[xX倍]?|低倍|下载|优化|实验性))(?!.*(?:家宽|住宅|Residential|Home|家用|宽带|Broadband|IPLC|IEPL|专线|HKT|CMI|HY2|9929|AS4837|AWS))(?!.*(?:[1-9]\d*(?:\.\d+)?\s*(?:[xX×✕✖⨉倍倍率])|[xX×✕✖⨉]\s*[1-9]\d*(?:\.\d+)?))/u,
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png',
+  exclude-type: "hysteria2|hysteria"   # 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇭🇰 香港',
@@ -132,67 +133,80 @@ const regionDefinitions = [
     name: '🇯🇵 日本',
     regex: /(?=.*(日本|🇯🇵|JP|[Jj]apan))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png',
+    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇺🇸 美国',
     regex: /(?=.*(美|🇺🇸|US|[Aa]merica|[Uu]nited\s*[Ss]tates))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png',
+    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇸🇬 新加坡',
     regex: /(?=.*(新加坡|狮城|🇸🇬|SG|[Ss]ingapore))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png',
+    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇹🇼 台湾省',
     regex: /(?=.*(台湾|🇹🇼|TW|[Tt]ai\s*[Ww]an))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png',
+    exclude-type: "hysteria2|hysteria",  // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇰🇷 韩国',
     regex: /(?=.*(韩|🇰🇷|KR|[Kk]orea))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png',
+    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇬🇧 英国',
     regex: /(?=.*(英|🇬🇧|UK|[Uu]nited\s*[Kk]ingdom|[Bb]ritain))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_Kingdom.png',
+    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇩🇪 德国',
     regex: /(?=.*(德国|🇩🇪|DE|[Gg]ermany))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Germany.png',
+    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇫🇷 法国',
     regex: /(?=.*(法国|🇫🇷|FR|[Ff]rance))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/France.png',
+    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇨🇦 加拿大',
     regex: /(?=.*(加拿大|🇨🇦|CA|[Cc]anada))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Canada.png',
+    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇦🇺 澳大利亚',
     regex: /(?=.*(澳大利亚|🇦🇺|AU|[Aa]ustralia))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Australia.png',
+    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇷🇺 俄罗斯',
     regex: /(?=.*(俄罗斯|🇷🇺|RU|[Rr]ussia))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Russia.png',
+    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '⛵ 低倍率节点',
     regex: /^(?!.*(?:剩|期|客户端|软件)).*(?:(?<!\d)0\.[0-5]|下载|低倍)/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png',
+    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '✈️ 高倍率节点',
     regex:
       /(?:[*xX✕✖⨉]\s*(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?\s*(?:倍|[*xX✕✖⨉]))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Airport.png',
+    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
 ];
 
