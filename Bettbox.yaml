@@ -1,0 +1,500 @@
+# ============================================================
+# Sparkle / mihomo YAML 覆写（替代 Bettbox.js）
+# 用法：Sparkle → 覆写 → 新建 → 类型选 YAML，导入本文件
+#
+# 说明：
+# 1. 这是一个 deepMerge 补丁，不是完整配置：
+#    - proxy-groups / rules 整体替换
+#    - proxies+ 为追加节点（deepMerge 的 + 后缀 = append）
+#    - dns! / hosts! 等带 ! 的键 = 整体替换该对象
+# 2. 与原 JS 版的差异（mihomo 的 YAML 表达能力所限）：
+#    - 启用 exclude-type 后，HY2/hysteria2 会被所有自动组排除；
+#      若想回到纯名字分流，删除所有 exclude-type 行即可
+#    - 空地区组仍会创建（mihomo 会临时塞入 COMPATIBLE），JS 则会省略
+#    - 名字命中的排除项仍留在 proxies 列表里，只是不进组
+# 3. 已修正原脚本的两个小问题：115 -> 115.com；emos 与 chilledmelon 两行拆开
+# ============================================================
+rules:
+  # ---------- 自定义直连 ----------
+  - DOMAIN-KEYWORD,yusen,DIRECT
+  - DOMAIN-SUFFIX,fromcoast.top,DIRECT
+  - DOMAIN-SUFFIX,hhanclub.top,DIRECT
+  - DOMAIN-SUFFIX,tieba.baidu.com,DIRECT
+  - DOMAIN-SUFFIX,micu.hk,DIRECT
+  - DOMAIN-SUFFIX,uestc.edu.cn,DIRECT
+  - DOMAIN-SUFFIX,m-team.cc,DIRECT
+  - DOMAIN-SUFFIX,labuladong.online,默认节点
+  - DOMAIN-SUFFIX,nowcoder.com,DIRECT
+  - DOMAIN-SUFFIX,115.com,DIRECT
+  - DOMAIN-SUFFIX,bing.com,DIRECT
+  - DOMAIN-SUFFIX,ieee.org,DIRECT
+  - DOMAIN-SUFFIX,codetop.cc,DIRECT
+  - DOMAIN-KEYWORD,wangjunqiang,DIRECT
+  - DOMAIN-KEYWORD,lyezi,DIRECT
+  - DOMAIN-KEYWORD,emos,DIRECT
+  - DOMAIN-KEYWORD,v.chilledmelon.com,DIRECT
+
+  # ---------- 私有网络 / 国内直连 ----------
+  - RULE-SET,private,直连
+  - RULE-SET,private_ip,直连,no-resolve
+  - RULE-SET,steam_cn,直连
+  - RULE-SET,epicgames,直连
+  - RULE-SET,nvidia_cn,直连
+  - RULE-SET,microsoft_cn,直连
+
+  # ---------- 服务分流 ----------
+  - RULE-SET,ai,国外AI
+  - RULE-SET,telegram,Telegram
+  - RULE-SET,telegram_ip,Telegram,no-resolve
+  - AND,((NETWORK,UDP),(DST-PORT,443),(RULE-SET,youtube)),REJECT
+  - RULE-SET,youtube,YouTube
+  - RULE-SET,google,谷歌服务
+  - RULE-SET,google_ip,谷歌服务,no-resolve
+  - RULE-SET,steam,Steam
+  - RULE-SET,googlefcm,FCM服务
+  - RULE-SET,github,GitHub
+  - RULE-SET,microsoft,微软服务
+  - RULE-SET,emby,Emby
+  - RULE-SET,emby_ip,Emby,no-resolve
+  - DOMAIN-KEYWORD,emby,Emby
+  - RULE-SET,AWAvenue_Ads,广告拦截
+
+  # ---------- 兜底 ----------
+  - RULE-SET,gfw,默认节点
+  - RULE-SET,cn,直连
+  - RULE-SET,cn_ip,直连
+  - MATCH,默认节点
+
+proxy-groups:
+  # ---------- 功能组 ----------
+  - name: 默认节点
+    type: select
+    proxies: ['🌏 低倍率(HK/JP/SG)', '🇭🇰 香港', '🇯🇵 日本', '🇺🇸 美国', '🇸🇬 新加坡', '🇹🇼 台湾省', '🇰🇷 韩国', '🇬🇧 英国', '🇩🇪 德国', '🇫🇷 法国', '🇨🇦 加拿大', '🇦🇺 澳大利亚', '🇷🇺 俄罗斯', '⛵ 低倍率节点', '✈️ 高倍率节点', '其他节点']
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
+
+  - name: 国外AI
+    type: select
+    proxies: ['🇸🇬 新加坡', '🇯🇵 日本', '🇺🇸 美国', '默认节点', '🇹🇼 台湾省', '🇰🇷 韩国', '🇬🇧 英国', '🇩🇪 德国', '🇫🇷 法国', '🇨🇦 加拿大', '🇦🇺 澳大利亚', '🇷🇺 俄罗斯', '其他节点']
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png
+
+  - name: Telegram
+    type: select
+    proxies: ['默认节点', '🌏 低倍率(HK/JP/SG)', '🇭🇰 香港', '🇯🇵 日本', '🇺🇸 美国', '🇸🇬 新加坡', '🇹🇼 台湾省', '🇰🇷 韩国', '🇬🇧 英国', '🇩🇪 德国', '🇫🇷 法国', '🇨🇦 加拿大', '🇦🇺 澳大利亚', '🇷🇺 俄罗斯', '⛵ 低倍率节点', '✈️ 高倍率节点', '其他节点']
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+
+  - name: YouTube
+    type: select
+    proxies: ['🌏 低倍率(HK/JP/SG)', '⛵ 低倍率节点']
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+
+  - name: 谷歌服务
+    type: select
+    proxies: ['默认节点', '🌏 低倍率(HK/JP/SG)', '🇭🇰 香港', '🇯🇵 日本', '🇺🇸 美国', '🇸🇬 新加坡', '🇹🇼 台湾省', '🇰🇷 韩国', '🇬🇧 英国', '🇩🇪 德国', '🇫🇷 法国', '🇨🇦 加拿大', '🇦🇺 澳大利亚', '🇷🇺 俄罗斯', '⛵ 低倍率节点', '✈️ 高倍率节点', '其他节点']
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png
+
+  - name: Steam
+    type: select
+    proxies: ['默认节点', '🌏 低倍率(HK/JP/SG)', '🇭🇰 香港', '🇯🇵 日本', '🇺🇸 美国', '🇸🇬 新加坡', '🇹🇼 台湾省', '🇰🇷 韩国', '🇬🇧 英国', '🇩🇪 德国', '🇫🇷 法国', '🇨🇦 加拿大', '🇦🇺 澳大利亚', '🇷🇺 俄罗斯', '⛵ 低倍率节点', '✈️ 高倍率节点', '其他节点']
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Steam.png
+
+  - name: FCM服务
+    type: select
+    proxies: ['直连', '默认节点', '🌏 低倍率(HK/JP/SG)', '🇭🇰 香港', '🇯🇵 日本', '🇺🇸 美国', '🇸🇬 新加坡', '🇹🇼 台湾省', '🇰🇷 韩国', '🇬🇧 英国', '🇩🇪 德国', '🇫🇷 法国', '🇨🇦 加拿大', '🇦🇺 澳大利亚', '🇷🇺 俄罗斯', '⛵ 低倍率节点', '✈️ 高倍率节点', '其他节点']
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png
+
+  - name: GitHub
+    type: select
+    proxies: ['默认节点', '🌏 低倍率(HK/JP/SG)', '🇭🇰 香港', '🇯🇵 日本', '🇺🇸 美国', '🇸🇬 新加坡', '🇹🇼 台湾省', '🇰🇷 韩国', '🇬🇧 英国', '🇩🇪 德国', '🇫🇷 法国', '🇨🇦 加拿大', '🇦🇺 澳大利亚', '🇷🇺 俄罗斯', '⛵ 低倍率节点', '✈️ 高倍率节点', '其他节点']
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png
+
+  - name: 微软服务
+    type: select
+    proxies: ['默认节点', '🌏 低倍率(HK/JP/SG)', '🇭🇰 香港', '🇯🇵 日本', '🇺🇸 美国', '🇸🇬 新加坡', '🇹🇼 台湾省', '🇰🇷 韩国', '🇬🇧 英国', '🇩🇪 德国', '🇫🇷 法国', '🇨🇦 加拿大', '🇦🇺 澳大利亚', '🇷🇺 俄罗斯', '⛵ 低倍率节点', '✈️ 高倍率节点', '其他节点']
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
+
+  - name: Emby
+    type: select
+    proxies: ['🌏 低倍率(HK/JP/SG)', '⛵ 低倍率节点']
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png
+
+  - name: 广告拦截
+    type: select
+    proxies: ['REJECT', 'REJECT-DROP', 'PASS', '直连']
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png
+
+  - name: 直连
+    type: select
+    proxies: ['🇨🇳 直连（IPv4优先）', '🇨🇳 直连（IPv6优先）', '🇨🇳 直连（双栈）']
+    url: https://connectivitycheck.platform.hicloud.com/generate_204
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China_Map.png
+
+  # ---------- 地区 / 倍率组（自动引入节点） ----------
+  - name: 🌏 低倍率(HK/JP/SG)
+    type: url-test
+    include-all-proxies: true
+    filter: &f_lowasia '^(?=.*(?:港|香港|🇭🇰|HK|[Hh]ong\s*[Kk]ong|新加坡|狮城|🇸🇬|SG|[Ss]ingapore))(?=.*(?:0\.[1-9]\s*[xX倍]?|低倍|下载|优化))(?!.*(?:家宽|住宅|Residential|Home|家用|宽带|Broadband|IPLC|IEPL|专线|HKT|CMI|9929|AS4837))(?!.*(?:[1-9]\d*(?:\.\d+)?\s*(?:[xX×✕✖⨉倍倍率])|[xX×✕✖⨉]\s*[1-9]\d*(?:\.\d+)?))'
+    exclude-filter: &e_global '(?i:群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|超时|收藏|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|禁止|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|⚠️|@|Expire|http|com)|(?i:专线|premium|directline|private)|🇨🇳 直连'
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png
+
+  - name: 🇭🇰 香港
+    type: url-test
+    include-all-proxies: true
+    filter: (?=.*(港|🇭🇰|HK|[Hh]ong\s*[Kk]ong))
+    exclude-filter: &e_rate '(?i:群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|超时|收藏|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|禁止|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|⚠️|@|Expire|http|com)|(?i:专线|premium|directline|private)|🇨🇳 直连|^(?=.*(?:港|香港|🇭🇰|HK|[Hh]ong\s*[Kk]ong|新加坡|狮城|🇸🇬|SG|[Ss]ingapore))(?=.*(?:0\.[1-9]\s*[xX倍]?|低倍|下载|优化))(?!.*(?:家宽|住宅|Residential|Home|家用|宽带|Broadband|IPLC|IEPL|专线|HKT|CMI|9929|AS4837))(?!.*(?:[1-9]\d*(?:\.\d+)?\s*(?:[xX×✕✖⨉倍倍率])|[xX×✕✖⨉]\s*[1-9]\d*(?:\.\d+)?))|^(?!.*(?:剩|期|客户端|软件)).*(?:(?<!\d)0\.[0-5]|下载|低倍)|(?:[*xX✕✖⨉]\s*(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?\s*(?:倍|[*xX✕✖⨉]))'
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+
+  - name: 🇯🇵 日本
+    type: url-test
+    include-all-proxies: true
+    filter: (?=.*(日本|🇯🇵|JP|[Jj]apan))
+    exclude-filter: *e_rate
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+
+  - name: 🇺🇸 美国
+    type: url-test
+    include-all-proxies: true
+    filter: (?=.*(美|🇺🇸|US|[Aa]merica|[Uu]nited\s*[Ss]tates))
+    exclude-filter: *e_rate
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
+
+  - name: 🇸🇬 新加坡
+    type: url-test
+    include-all-proxies: true
+    filter: (?=.*(新加坡|狮城|🇸🇬|SG|[Ss]ingapore))
+    exclude-filter: *e_rate
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+
+  - name: 🇹🇼 台湾省
+    type: url-test
+    include-all-proxies: true
+    filter: (?=.*(台湾|🇹🇼|TW|[Tt]ai\s*[Ww]an))
+    exclude-filter: *e_rate
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
+
+  - name: 🇰🇷 韩国
+    type: url-test
+    include-all-proxies: true
+    filter: (?=.*(韩|🇰🇷|KR|[Kk]orea))
+    exclude-filter: *e_rate
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png
+
+  - name: 🇬🇧 英国
+    type: url-test
+    include-all-proxies: true
+    filter: (?=.*(英|🇬🇧|UK|[Uu]nited\s*[Kk]ingdom|[Bb]ritain))
+    exclude-filter: *e_rate
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_Kingdom.png
+
+  - name: 🇩🇪 德国
+    type: url-test
+    include-all-proxies: true
+    filter: (?=.*(德国|🇩🇪|DE|[Gg]ermany))
+    exclude-filter: *e_rate
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Germany.png
+
+  - name: 🇫🇷 法国
+    type: url-test
+    include-all-proxies: true
+    filter: (?=.*(法国|🇫🇷|FR|[Ff]rance))
+    exclude-filter: *e_rate
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/France.png
+
+  - name: 🇨🇦 加拿大
+    type: url-test
+    include-all-proxies: true
+    filter: (?=.*(加拿大|🇨🇦|CA|[Cc]anada))
+    exclude-filter: *e_rate
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Canada.png
+
+  - name: 🇦🇺 澳大利亚
+    type: url-test
+    include-all-proxies: true
+    filter: (?=.*(澳大利亚|🇦🇺|AU|[Aa]ustralia))
+    exclude-filter: *e_rate
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Australia.png
+
+  - name: 🇷🇺 俄罗斯
+    type: url-test
+    include-all-proxies: true
+    filter: (?=.*(俄罗斯|🇷🇺|RU|[Rr]ussia))
+    exclude-filter: *e_rate
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Russia.png
+
+  - name: ⛵ 低倍率节点
+    type: url-test
+    include-all-proxies: true
+    filter: ^(?!.*(?:剩|期|客户端|软件)).*(?:(?<!\d)0\.[0-5]|下载|低倍)
+    exclude-filter: '(?i:群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|超时|收藏|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|禁止|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|⚠️|@|Expire|http|com)|(?i:专线|premium|directline|private)|🇨🇳 直连|^(?=.*(?:港|香港|🇭🇰|HK|[Hh]ong\s*[Kk]ong|新加坡|狮城|🇸🇬|SG|[Ss]ingapore))(?=.*(?:0\.[1-9]\s*[xX倍]?|低倍|下载|优化))(?!.*(?:家宽|住宅|Residential|Home|家用|宽带|Broadband|IPLC|IEPL|专线|HKT|CMI|9929|AS4837))(?!.*(?:[1-9]\d*(?:\.\d+)?\s*(?:[xX×✕✖⨉倍倍率])|[xX×✕✖⨉]\s*[1-9]\d*(?:\.\d+)?))'
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png
+
+  - name: ✈️ 高倍率节点
+    type: url-test
+    include-all-proxies: true
+    filter: (?:[*xX✕✖⨉]\s*(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?\s*(?:倍|[*xX✕✖⨉]))
+    exclude-filter: '(?i:群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|超时|收藏|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|禁止|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|⚠️|@|Expire|http|com)|(?i:专线|premium|directline|private)|🇨🇳 直连|^(?=.*(?:港|香港|🇭🇰|HK|[Hh]ong\s*[Kk]ong|新加坡|狮城|🇸🇬|SG|[Ss]ingapore))(?=.*(?:0\.[1-9]\s*[xX倍]?|低倍|下载|优化))(?!.*(?:家宽|住宅|Residential|Home|家用|宽带|Broadband|IPLC|IEPL|专线|HKT|CMI|9929|AS4837))(?!.*(?:[1-9]\d*(?:\.\d+)?\s*(?:[xX×✕✖⨉倍倍率])|[xX×✕✖⨉]\s*[1-9]\d*(?:\.\d+)?))|^(?!.*(?:剩|期|客户端|软件)).*(?:(?<!\d)0\.[0-5]|下载|低倍)'
+    exclude-type: 'hysteria|hysteria2'
+    interval: 14400
+    tolerance: 50
+    timeout: 3000
+    url: https://www.gstatic.com/generate_204
+    lazy: false
+    max-failed-times: 3
+    hidden: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Airport.png
+
+  - name: 其他节点
+    type: select
+    include-all-proxies: true
+    exclude-filter: &e_other '(?i:群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|超时|收藏|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|禁止|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|⚠️|@|Expire|http|com)|(?i:专线|premium|directline|private)|🇨🇳 直连|^(?=.*(?:港|香港|🇭🇰|HK|[Hh]ong\s*[Kk]ong|新加坡|狮城|🇸🇬|SG|[Ss]ingapore))(?=.*(?:0\.[1-9]\s*[xX倍]?|低倍|下载|优化))(?!.*(?:家宽|住宅|Residential|Home|家用|宽带|Broadband|IPLC|IEPL|专线|HKT|CMI|9929|AS4837))(?!.*(?:[1-9]\d*(?:\.\d+)?\s*(?:[xX×✕✖⨉倍倍率])|[xX×✕✖⨉]\s*[1-9]\d*(?:\.\d+)?))|^(?!.*(?:剩|期|客户端|软件)).*(?:(?<!\d)0\.[0-5]|下载|低倍)|(?:[*xX✕✖⨉]\s*(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?\s*(?:倍|[*xX✕✖⨉]))|(?=.*(港|🇭🇰|HK|[Hh]ong\s*[Kk]ong))|(?=.*(日本|🇯🇵|JP|[Jj]apan))|(?=.*(美|🇺🇸|US|[Aa]merica|[Uu]nited\s*[Ss]tates))|(?=.*(新加坡|狮城|🇸🇬|SG|[Ss]ingapore))|(?=.*(台湾|🇹🇼|TW|[Tt]ai\s*[Ww]an))|(?=.*(韩|🇰🇷|KR|[Kk]orea))|(?=.*(英|🇬🇧|UK|[Uu]nited\s*[Kk]ingdom|[Bb]ritain))|(?=.*(德国|🇩🇪|DE|[Gg]ermany))|(?=.*(法国|🇫🇷|FR|[Ff]rance))|(?=.*(加拿大|🇨🇦|CA|[Cc]anada))|(?=.*(澳大利亚|🇦🇺|AU|[Aa]ustralia))|(?=.*(俄罗斯|🇷🇺|RU|[Rr]ussia))'
+    exclude-type: 'hysteria|hysteria2'
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/World_Map.png
+
+proxies+:
+  - { name: '🇨🇳 直连（IPv4优先）', type: direct, ip-version: ipv4-prefer }
+  - { name: '🇨🇳 直连（IPv6优先）', type: direct, ip-version: ipv6-prefer }
+  - { name: '🇨🇳 直连（双栈）', type: direct }
+
+rule-providers!:
+  AWAvenue_Ads: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.mrs', path: './ruleset/AWAvenue_Ads.mrs' }
+  fakeip_filter: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/fakeip-filter.mrs', path: './ruleset/fakeip-filter.mrs' }
+  epicgames: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/epicgames.mrs', path: './ruleset/epicgames.mrs' }
+  nvidia_cn: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/nvidia@cn.mrs', path: './ruleset/nvidia@cn.mrs' }
+  ai: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/ai.mrs', path: './ruleset/ai.mrs' }
+  youtube: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs', path: './ruleset/youtube.mrs' }
+  googlefcm: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/googlefcm.mrs', path: './ruleset/googlefcm.mrs' }
+  google: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs', path: './ruleset/google.mrs' }
+  google_ip: { type: http, interval: 86400, behavior: ipcidr, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs', path: './ruleset/google_ip.mrs' }
+  github: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs', path: './ruleset/github.mrs' }
+  microsoft: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs', path: './ruleset/microsoft.mrs' }
+  microsoft_cn: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft@cn.mrs', path: './ruleset/microsoft@cn.mrs' }
+  telegram: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs', path: './ruleset/telegram.mrs' }
+  telegram_ip: { type: http, interval: 86400, behavior: ipcidr, format: text, url: 'https://core.telegram.org/resources/cidr.txt', path: './ruleset/telegram_ip.txt' }
+  pixiv: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/pixiv.mrs', path: './ruleset/pixiv.mrs' }
+  steam: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam.mrs', path: './ruleset/steam.mrs' }
+  steam_cn: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam@cn.mrs', path: './ruleset/steam@cn.mrs' }
+  twitter: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.mrs', path: './ruleset/twitter.mrs' }
+  twitter_ip: { type: http, interval: 86400, behavior: ipcidr, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.mrs', path: './ruleset/twitter_ip.mrs' }
+  private: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs', path: './ruleset/private.mrs' }
+  private_ip: { type: http, interval: 86400, behavior: ipcidr, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs', path: './ruleset/private_ip.mrs' }
+  gfw: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/DustinWin/ruleset_geodata//mihomo-ruleset/gfw.mrs', path: './ruleset/gfw.mrs' }
+  cn: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://static-file-global.353355.xyz/rules/cn-additional-list.mrs', path: './ruleset/cn.mrs' }
+  cn_ip: { type: http, interval: 86400, behavior: ipcidr, format: mrs, url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs', path: './ruleset/cn_ip.mrs' }
+  emby: { type: http, interval: 86400, behavior: domain, format: mrs, url: 'https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Emby.mrs', path: './ruleset/emby.mrs' }
+  emby_ip: { type: http, interval: 86400, behavior: ipcidr, format: mrs, url: 'https://raw.githubusercontent.com/666OS/rules/release/mihomo/ip/Emby.mrs', path: './ruleset/emby_ip.mrs' }
+
+
+
+# ---------- 基础配置 ----------
+allow-lan: true
+ipv6: true
+bind-address: '*'
+unified-delay: true
+tcp-concurrent: true
+keep-alive-idle: 600
+keep-alive-interval: 60
+find-process-mode: strict
+external-controller: '[::]:9090'
+external-ui: ui
+external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip
+
+profile!:
+  store-selected: true
+  store-fake-ip: true
+
+dns!:
+  enable: true
+  listen: 0.0.0.0:1053
+  ipv6: true
+  enhanced-mode: fake-ip
+  use-system-hosts: false
+  cache-algorithm: arc
+  fake-ip-range: 198.18.0.1/16
+  respect-rules: true
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+  proxy-server-nameserver:
+    - https://223.5.5.5/dns-query
+    - https://doh.pub/dns-query
+  fake-ip-filter:
+    - +.lan
+    - +.local
+    - +.msftconnecttest.com
+    - +.msftncsi.com
+    - localhost.ptlogin2.qq.com
+    - localhost.sec.qq.com
+    - +.in-addr.arpa
+    - +.ip6.arpa
+    - time.*.com
+    - time.*.gov
+    - pool.ntp.org
+    - localhost.work.weixin.qq.com
+    - +.apple.com
+    - +.icloud.com
+    - +.googleapis.com
+  nameserver-policy:
+    geosite:private,cn:
+      - https://223.5.5.5/dns-query
+      - https://doh.pub/dns-query
+  cache-size: 8192
+  dns-cache: true
+  dns-hijack:
+    - 8.8.8.8:53
+    - 8.8.4.4:53
+  fallback:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+
+hosts!:
+  dns.alidns.com: [223.5.5.5, 223.6.6.6]
+  doh.pub: [1.12.12.21, 120.53.53.53]
+  dns.google: [8.8.8.8, 8.8.4.4]
+
+sniffer!:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: false
+  sniff:
+    HTTP:
+      ports: [80, '8080-8880']
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  skip-domain: [Mijia Cloud, +.oray.com, +.push.apple.com]
+  skip-dst-address: [rule-set:telegram_ip]
+
+ntp!:
+  enable: true
+  write-to-system: false
+  server: cn.ntp.org.cn
+
+tun!:
+  enable: false
+  stack: system
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+  dns-hijack: [udp://any:53, tcp://any:53]
