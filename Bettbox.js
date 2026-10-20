@@ -1,63 +1,62 @@
 //https://raw.githubusercontent.com/Tom-Smithman/mini/refs/heads/master/Bettbox.js
 // rules 预定义
 const rules = [
-	"DOMAIN-KEYWORD,yusen,DIRECT",  
-	"DOMAIN-SUFFIX,fromcoast.top,DIRECT",
-	"DOMAIN-SUFFIX,hhanclub.top,DIRECT", 
-	"DOMAIN-SUFFIX,tieba.baidu.com,DIRECT", 
-	"DOMAIN-SUFFIX,micu.hk,DIRECT", 
-    "DOMAIN-SUFFIX,uestc.edu.cn,DIRECT",
-    "DOMAIN-SUFFIX,m-team.cc,DIRECT",
-    "DOMAIN-SUFFIX,labuladong.online,默认节点",
-    "DOMAIN-SUFFIX,nowcoder.com,DIRECT", 
-    "DOMAIN-SUFFIX,115,DIRECT", 
-    "DOMAIN-SUFFIX,bing.com,DIRECT",
-    "DOMAIN-SUFFIX,ieee.org,DIRECT",
-    "DOMAIN-SUFFIX,codetop.cc,DIRECT",
-    "DOMAIN-KEYWORD,wangjunqiang,DIRECT",
-    "DOMAIN-KEYWORD,lyezi,DIRECT",
-    "DOMAIN-KEYWORD,emos,DIRECT",                 
-	"DOMAIN-KEYWORD,v.chilledmelon.com,DIRECT",
-	# [0] 矩阵通用服务
-    "DOMAIN-SUFFIX,gdzhimou.com,DIRECT",
+  "DOMAIN-KEYWORD,yusen,DIRECT",
+  "DOMAIN-SUFFIX,fromcoast.top,DIRECT",
+  "DOMAIN-SUFFIX,hhanclub.top,DIRECT",
+  "DOMAIN-SUFFIX,tieba.baidu.com,DIRECT",
+  "DOMAIN-SUFFIX,micu.hk,DIRECT",
+  "DOMAIN-SUFFIX,uestc.edu.cn,DIRECT",
+  "DOMAIN-SUFFIX,m-team.cc,DIRECT",
+  "DOMAIN-SUFFIX,labuladong.online,默认节点",
+  "DOMAIN-SUFFIX,nowcoder.com,DIRECT",
+  "DOMAIN-SUFFIX,115.com,DIRECT",          // 原 "115" 不是有效后缀
+  "DOMAIN-SUFFIX,bing.com,DIRECT",
+  "DOMAIN-SUFFIX,ieee.org,DIRECT",
+  "DOMAIN-SUFFIX,codetop.cc,DIRECT",
+  "DOMAIN-KEYWORD,wangjunqiang,DIRECT",
+  "DOMAIN-KEYWORD,lyezi,DIRECT",
+  "DOMAIN-KEYWORD,emos,DIRECT",
+  "DOMAIN-KEYWORD,v.chilledmelon.com,DIRECT",
 
-    # [1] B 站 / 哔哩哔哩
-	"DOMAIN-KEYWORD,bilibili,DIRECT",        # bilibili.com / bilibili.tv
-	"DOMAIN-KEYWORD,bilivideo,DIRECT",       # bilivideo.com / bilivideo.cn
-	"DOMAIN-KEYWORD,biliapi,DIRECT",         # biliapi.net / biliapi.com
-	"DOMAIN-SUFFIX,hdslb.com,DIRECT",
-	"DOMAIN-SUFFIX,acg.tv,DIRECT",
-	"DOMAIN-SUFFIX,acgvideo.com,DIRECT",
-	"DOMAIN-SUFFIX,biliimg.com,DIRECT",
-	"DOMAIN-SUFFIX,b23.tv,DIRECT",
-	"DOMAIN-SUFFIX,bsbsb.top,DIRECT",
+  // [0] 矩阵通用服务
+  "DOMAIN-SUFFIX,gdzhimou.com,DIRECT",
 
-	# [2] 抖音 / 字节跳动
-	"DOMAIN-KEYWORD,douyin,DIRECT",          # douyin.com / douyinvod / idouyinvod / douyinpic / douyincdn / douyinstatic / iesdouyin
-	"DOMAIN-KEYWORD,ixigua,DIRECT",          # ixigua.com / ixiguavideo.com
-	"DOMAIN-SUFFIX,bytednsdoc.com,DIRECT",
-	"DOMAIN-SUFFIX,bytedance.com,DIRECT",
-	"DOMAIN-SUFFIX,byteimg.com,DIRECT",
-	"DOMAIN-SUFFIX,bytevod.com,DIRECT",
-	"DOMAIN-SUFFIX,bytetos.com,DIRECT",
-	"DOMAIN-SUFFIX,amemv.com,DIRECT",
-	"DOMAIN-SUFFIX,snssdk.com,DIRECT",
-	"DOMAIN-SUFFIX,zijieapi.com,DIRECT",
-	"DOMAIN-SUFFIX,pstatp.com,DIRECT",
-	"DOMAIN-SUFFIX,toutiao.com,DIRECT",
-	"DOMAIN-SUFFIX,v5-dy-o-abtest.zjcdn.com,DIRECT",
+  // [1] B 站 / 哔哩哔哩
+  "DOMAIN-KEYWORD,bilibili,DIRECT",        // bilibili.com / bilibili.tv
+  "DOMAIN-KEYWORD,bilivideo,DIRECT",       // bilivideo.com / bilivideo.cn
+  "DOMAIN-KEYWORD,biliapi,DIRECT",         // biliapi.net / biliapi.com
+  "DOMAIN-SUFFIX,hdslb.com,DIRECT",
+  "DOMAIN-SUFFIX,acg.tv,DIRECT",
+  "DOMAIN-SUFFIX,acgvideo.com,DIRECT",
+  "DOMAIN-SUFFIX,biliimg.com,DIRECT",
+  "DOMAIN-SUFFIX,b23.tv,DIRECT",
+  "DOMAIN-SUFFIX,bsbsb.top,DIRECT",
 
+  // [2] 抖音 / 字节跳动
+  "DOMAIN-KEYWORD,douyin,DIRECT",          // douyin.com / douyinvod / idouyinvod / douyinpic / douyincdn / douyinstatic / iesdouyin
+  "DOMAIN-KEYWORD,ixigua,DIRECT",          // ixigua.com / ixiguavideo.com
+  "DOMAIN-SUFFIX,bytednsdoc.com,DIRECT",
+  "DOMAIN-SUFFIX,bytedance.com,DIRECT",
+  "DOMAIN-SUFFIX,byteimg.com,DIRECT",
+  "DOMAIN-SUFFIX,bytevod.com,DIRECT",
+  "DOMAIN-SUFFIX,bytetos.com,DIRECT",
+  "DOMAIN-SUFFIX,amemv.com,DIRECT",
+  "DOMAIN-SUFFIX,snssdk.com,DIRECT",
+  "DOMAIN-SUFFIX,zijieapi,DIRECT",
+  "DOMAIN-SUFFIX,pstatp.com,DIRECT",
+  "DOMAIN-SUFFIX,toutiao.com,DIRECT",
+  "DOMAIN-SUFFIX,v5-dy-o-abtest.zjcdn.com,DIRECT",
 
-   
   // 私有网络直连
-  'RULE-SET,private,直连',
-  'RULE-SET,private_ip,直连,no-resolve',
+  "RULE-SET,private,直连",
+  "RULE-SET,private_ip,直连,no-resolve",
 
   // 国内直连
-  'RULE-SET,steam_cn,直连',
-  'RULE-SET,epicgames,直连',
-  'RULE-SET,nvidia_cn,直连',
-  'RULE-SET,microsoft_cn,直连',
+  "RULE-SET,steam_cn,直连",
+  "RULE-SET,epicgames,直连",
+  "RULE-SET,nvidia_cn,直连",
+  "RULE-SET,microsoft_cn,直连",
 ];
 // --- 1. 静态配置区域 ---
 
