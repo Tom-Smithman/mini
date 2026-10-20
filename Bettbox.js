@@ -122,12 +122,13 @@ const regionDefinitions = [
   name: '🌏 低倍率(HK/JP/SG)',
   regex: /^(?=.*(?:港|香港|🇭🇰|HK|[Hh]ong\s*[Kk]ong|新加坡|狮城|🇸🇬|SG|[Ss]ingapore))(?=.*(?:0\.[1-9]\s*[xX倍]?|低倍|下载|优化|实验性))(?!.*(?:家宽|住宅|Residential|Home|家用|宽带|Broadband|IPLC|IEPL|专线|HKT|CMI|HY2|9929|AS4837|AWS))(?!.*(?:[1-9]\d*(?:\.\d+)?\s*(?:[xX×✕✖⨉倍倍率])|[xX×✕✖⨉]\s*[1-9]\d*(?:\.\d+)?))/u,
   icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png',
-  exclude-type: "hysteria2|hysteria"   # 大小写不敏感，不支持正则，多类型用 | 分隔
+  exclude-type: "hysteria2|hysteria"   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇭🇰 香港',
     regex: /(?=.*(港|🇭🇰|HK|[Hh]ong\s*[Kk]ong))/u,
     icon: 'https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png', 
+    exclude-type: "hysteria2|hysteria",   // 大小写不敏感，不支持正则，多类型用 | 分隔
   },
   {
     name: '🇯🇵 日本',
