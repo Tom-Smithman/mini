@@ -88,7 +88,7 @@ const ruleOptionsEnable = {
   twitter: false, // Twitter社交平台
   pixiv: false, // Pixiv绘画网站
   emby: true, // Emby媒体服务
-  adblock: true, // 广告拦截
+  adblock: false, // 广告拦截
 };
 
 /**
